@@ -1,5 +1,6 @@
 import { Search, ChevronDown } from "lucide-react";
 import Image from "next/image";
+import NavbarLinks from "./NavbarLinks";
 
 function Navbar() {
   return (
@@ -33,26 +34,7 @@ function Navbar() {
         </div>
       </nav>
 
-      <nav className="bg-black bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-80 text-white flex items-center justify-center h-16 top-[64px] w-full z-10">
-        <ul className="flex items-center space-x-16">
-          <li className="link transition-colors navlinks_transition">
-            Art & Culture
-          </li>
-          <li className="link transition-colors navlinks_transition">
-            Sustainability
-          </li>
-          <li className="link transition-colors navlinks_transition">Design</li>
-          <li className="link transition-colors navlinks_transition">
-            Innovation
-          </li>
-          <li className="link transition-colors navlinks_transition">
-            Exclusive
-          </li>
-          <li className="link transition-colors navlinks_transition">
-            Vehicles
-          </li>
-        </ul>
-      </nav>
+      <NavbarLinks/>
     </header>
   );
 }
