@@ -13,6 +13,8 @@ function MainPage() {
         <source src="./original.mp4" type="video/mp4" />
       </video>
 
+      
+
       <div className="absolute top-[50%] left-32 text-white">
         <h1 className="text-4xl font-medium">Mercedes-Benz X Esports.</h1>
         <h3 className="my-4 font-medium text-lg">

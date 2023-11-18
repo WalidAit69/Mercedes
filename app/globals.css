@@ -9,7 +9,21 @@
   box-sizing: border-box;
 }
 
-a,ul,button{
+html {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+main {
+  height: 100%;
+  width: 100vw;
+  scroll-snap-align: center;
+  overflow: hidden;
+}
+
+a,
+ul,
+button {
   cursor: pointer;
 }
 
@@ -17,19 +31,14 @@ a,ul,button{
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50% , -50%);
+  transform: translate(-50%, -50%);
 }
 
-.blur_{
-  background: rgba(255, 255, 255, 0.3); /* Adjust the alpha value for transparency */
-  backdrop-filter: blur(10px);
-}
-
-.navlinks_transition{
+.navlinks_transition {
   transition: .5s;
 }
 
-.link:hover .link:last-child{
+.link:hover .link:last-child {
   color: gray;
 }
 

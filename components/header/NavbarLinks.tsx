@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import { motion, useAnimation } from "framer-motion";
+import React, { useState, useEffect } from "react";
 
-function NavbarLinks() {
+function NavbarLinks({ showLinks }: { showLinks: boolean }) {
   const [hoveredLink, setHoveredLink] = useState(0);
 
   const handleLinkHover = (index: number) => {
@@ -13,10 +14,48 @@ function NavbarLinks() {
     setHoveredLink(0);
   };
 
+  const heightcontrols = useAnimation();
+  const positioncontrols = useAnimation();
+
+  const [scrollDirection, setScrollDirection] = useState("");
+  const [prevScrollY, setPrevScrollY] = useState(0);
+
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY;
+
+    if (currentScrollY > prevScrollY) {
+      setScrollDirection("down");
+    } else if (currentScrollY < prevScrollY) {
+      setScrollDirection("up");
+    }
+
+    setPrevScrollY(currentScrollY);
+  };
+
+  useEffect(() => {
+    if (showLinks || scrollDirection === "up") {
+      heightcontrols.start({ height: "64px" });
+      positioncontrols.start({ y: 0, opacity: 1 });
+    } else if (!showLinks && window.scrollY > 10) {
+      heightcontrols.start({ height: 0 });
+      positioncontrols.start({ y: -40, opacity: 1 });
+    }
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [heightcontrols, positioncontrols, showLinks, prevScrollY]);
+
   return (
-    <nav className="bg-black bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-80 text-white flex items-center justify-center h-16 top-[64px] w-full z-10">
+    <motion.nav
+      animate={heightcontrols}
+      transition={{ duration: 0.5, delay: 0.2, ease: [0.8, 0, 0, 0.8] }}
+      className="bg-black bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-80 text-white flex items-center justify-center h-16 top-[64px] w-full z-10"
+    >
       <ul className="flex items-center space-x-16">
-        <li
+        <motion.li
+          animate={positioncontrols}
+          transition={{ duration: 0.5, ease: [0.8, 0, 0, 0.8] }}
           className="link transition-colors navlinks_transition text-white"
           onMouseEnter={() => handleLinkHover(1)}
           onMouseLeave={() => handleLinkLeave()}
@@ -30,9 +69,11 @@ function NavbarLinks() {
           }}
         >
           Art & Culture
-        </li>
+        </motion.li>
 
-        <li
+        <motion.li
+          animate={positioncontrols}
+          transition={{ duration: 0.5, ease: [0.8, 0, 0, 0.8] }}
           className="link transition-colors navlinks_transition"
           onMouseEnter={() => handleLinkHover(2)}
           onMouseLeave={() => handleLinkLeave()}
@@ -46,9 +87,11 @@ function NavbarLinks() {
           }}
         >
           Sustainability
-        </li>
+        </motion.li>
 
-        <li
+        <motion.li
+          animate={positioncontrols}
+          transition={{ duration: 0.5, ease: [0.8, 0, 0, 0.8] }}
           className="link transition-colors navlinks_transition"
           onMouseEnter={() => handleLinkHover(3)}
           onMouseLeave={() => handleLinkLeave()}
@@ -62,9 +105,11 @@ function NavbarLinks() {
           }}
         >
           Design
-        </li>
+        </motion.li>
 
-        <li
+        <motion.li
+          animate={positioncontrols}
+          transition={{ duration: 0.5, ease: [0.8, 0, 0, 0.8] }}
           className="link transition-colors navlinks_transition"
           onMouseEnter={() => handleLinkHover(4)}
           onMouseLeave={() => handleLinkLeave()}
@@ -78,9 +123,11 @@ function NavbarLinks() {
           }}
         >
           Innovation
-        </li>
+        </motion.li>
 
-        <li
+        <motion.li
+          animate={positioncontrols}
+          transition={{ duration: 0.5, ease: [0.8, 0, 0, 0.8] }}
           className="link transition-colors navlinks_transition"
           onMouseEnter={() => handleLinkHover(5)}
           onMouseLeave={() => handleLinkLeave()}
@@ -94,9 +141,11 @@ function NavbarLinks() {
           }}
         >
           Exclusive
-        </li>
+        </motion.li>
 
-        <li
+        <motion.li
+          animate={positioncontrols}
+          transition={{ duration: 0.5, ease: [0.8, 0, 0, 0.8] }}
           className="link transition-colors navlinks_transition"
           onMouseEnter={() => handleLinkHover(6)}
           onMouseLeave={() => handleLinkLeave()}
@@ -110,9 +159,9 @@ function NavbarLinks() {
           }}
         >
           Vehicles
-        </li>
+        </motion.li>
       </ul>
-    </nav>
+    </motion.nav>
   );
 }
 

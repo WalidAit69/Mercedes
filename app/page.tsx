@@ -3,10 +3,9 @@ import Navbar from "@/components/header/Navbar";
 
 export default function Home() {
   return (
-    <div className="relative h-[100vh]">
-      <div className="absolute top-0 w-full">
-        <Navbar />
-      </div>
+    <div className="relaive h-[100vh]">
+      <MainPage />
+      <MainPage />
       <MainPage />
     </div>
   );
