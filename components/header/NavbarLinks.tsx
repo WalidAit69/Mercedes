@@ -1,9 +1,11 @@
 "use client";
 
+import { useScrollDirection } from "@/hooks/UseScroll";
 import { motion, useAnimation } from "framer-motion";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 function NavbarLinks({ showLinks }: { showLinks: boolean }) {
+  const ref = useRef(null);
   const [hoveredLink, setHoveredLink] = useState(0);
 
   const handleLinkHover = (index: number) => {
@@ -17,43 +19,31 @@ function NavbarLinks({ showLinks }: { showLinks: boolean }) {
   const heightcontrols = useAnimation();
   const positioncontrols = useAnimation();
 
-  const [scrollDirection, setScrollDirection] = useState("");
-  const [prevScrollY, setPrevScrollY] = useState(0);
-
-  const handleScroll = () => {
-    const currentScrollY = window.scrollY;
-
-    if (currentScrollY > prevScrollY) {
-      setScrollDirection("down");
-    } else if (currentScrollY < prevScrollY) {
-      setScrollDirection("up");
-    }
-
-    setPrevScrollY(currentScrollY);
-  };
+  const scrollDirection = useScrollDirection();
 
   useEffect(() => {
+    heightcontrols.start({ height: "64px" });
+    positioncontrols.start({ y: 0, opacity: 1 });
+
     if (showLinks || scrollDirection === "up") {
       heightcontrols.start({ height: "64px" });
       positioncontrols.start({ y: 0, opacity: 1 });
-    } else if (!showLinks && window.scrollY > 10) {
+    } else if (!showLinks && scrollDirection === "down") {
       heightcontrols.start({ height: 0 });
       positioncontrols.start({ y: -40, opacity: 1 });
     }
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [heightcontrols, positioncontrols, showLinks, prevScrollY]);
+  }, [heightcontrols, positioncontrols, showLinks, scrollDirection]);
 
   return (
     <motion.nav
+      initial={{ height: 0 }}
       animate={heightcontrols}
       transition={{ duration: 0.5, delay: 0.2, ease: [0.8, 0, 0, 0.8] }}
       className="bg-black bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-80 text-white flex items-center justify-center h-16 top-[64px] w-full z-10"
     >
       <ul className="flex items-center space-x-16">
         <motion.li
+          initial={{ y: -40, opacity: 0 }}
           animate={positioncontrols}
           transition={{ duration: 0.5, ease: [0.8, 0, 0, 0.8] }}
           className="link transition-colors navlinks_transition text-white"
@@ -72,6 +62,7 @@ function NavbarLinks({ showLinks }: { showLinks: boolean }) {
         </motion.li>
 
         <motion.li
+          initial={{ y: -40, opacity: 0 }}
           animate={positioncontrols}
           transition={{ duration: 0.5, ease: [0.8, 0, 0, 0.8] }}
           className="link transition-colors navlinks_transition"
@@ -90,6 +81,7 @@ function NavbarLinks({ showLinks }: { showLinks: boolean }) {
         </motion.li>
 
         <motion.li
+          initial={{ y: -40, opacity: 0 }}
           animate={positioncontrols}
           transition={{ duration: 0.5, ease: [0.8, 0, 0, 0.8] }}
           className="link transition-colors navlinks_transition"
@@ -108,6 +100,7 @@ function NavbarLinks({ showLinks }: { showLinks: boolean }) {
         </motion.li>
 
         <motion.li
+          initial={{ y: -40, opacity: 0 }}
           animate={positioncontrols}
           transition={{ duration: 0.5, ease: [0.8, 0, 0, 0.8] }}
           className="link transition-colors navlinks_transition"
@@ -126,6 +119,7 @@ function NavbarLinks({ showLinks }: { showLinks: boolean }) {
         </motion.li>
 
         <motion.li
+          initial={{ y: -40, opacity: 0 }}
           animate={positioncontrols}
           transition={{ duration: 0.5, ease: [0.8, 0, 0, 0.8] }}
           className="link transition-colors navlinks_transition"
@@ -144,6 +138,7 @@ function NavbarLinks({ showLinks }: { showLinks: boolean }) {
         </motion.li>
 
         <motion.li
+          initial={{ y: -40, opacity: 0 }}
           animate={positioncontrols}
           transition={{ duration: 0.5, ease: [0.8, 0, 0, 0.8] }}
           className="link transition-colors navlinks_transition"

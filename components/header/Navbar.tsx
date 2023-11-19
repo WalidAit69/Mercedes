@@ -3,40 +3,25 @@
 import { Search, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import NavbarLinks from "./NavbarLinks";
-import { motion, useAnimation } from "framer-motion";
+import { motion, useAnimation, useInView } from "framer-motion";
 import React, { useState, useEffect } from "react";
+import { useScrollDirection } from "@/hooks/UseScroll";
 
 function Navbar() {
-  const [showLinks, setshowLinks] = useState(true);
+  const [showLinks, setshowLinks] = useState(false);
 
   const positioncontrols = useAnimation();
-
-  const [scrollDirection, setScrollDirection] = useState("");
-  const [prevScrollY, setPrevScrollY] = useState(0);
-
-  const handleScroll = () => {
-    const currentScrollY = window.scrollY;
-
-    if (currentScrollY > prevScrollY) {
-      setScrollDirection("down");
-    } else if (currentScrollY < prevScrollY) {
-      setScrollDirection("up");
-    }
-
-    setPrevScrollY(currentScrollY);
-  };
+  const scrollDirection = useScrollDirection();
 
   useEffect(() => {
+    positioncontrols.start({ y: 0, opacity: 1 });
+
     if (showLinks || scrollDirection === "up") {
       positioncontrols.start({ y: 0, opacity: 1 });
-    } else if (!showLinks && window.scrollY > 10) {
+    } else if (!showLinks && scrollDirection === "down") {
       positioncontrols.start({ y: -40, opacity: 1 });
     }
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [positioncontrols, showLinks, prevScrollY]);
+  }, [positioncontrols, showLinks, scrollDirection]);
 
   return (
     <header
@@ -48,6 +33,7 @@ function Navbar() {
         <div className="">
           <motion.ul
             className="flex"
+            initial={{ y: -40, opacity: 0 }}
             animate={positioncontrols}
             transition={{ duration: 0.5, ease: [0.8, 0, 0, 0.8] }}
           >
@@ -63,6 +49,7 @@ function Navbar() {
 
         <div>
           <motion.div
+            initial={{ y: -40, opacity: 0 }}
             animate={positioncontrols}
             transition={{ duration: 0.5, ease: [0.8, 0, 0, 0.8] }}
             className="flex gap-10"
