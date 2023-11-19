@@ -10,11 +10,11 @@
 }
 
 html {
-  scroll-snap-type: y;
+  scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
 }
 
-main {
+section {
   height: 100%;
   width: 100%;
   scroll-snap-align: center;

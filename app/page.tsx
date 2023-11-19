@@ -8,7 +8,6 @@ export default function Home() {
       <MainPage />
       <MainPageMaybach />
       <Features />
-      <MainPageMaybach />
 
     </div>
   );
