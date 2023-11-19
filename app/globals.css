@@ -10,51 +10,20 @@
 }
 
 html {
-  scroll-snap-type: y mandatory;
+  scroll-snap-type: y none;
   scroll-behavior: smooth;
 }
 
-section {
+main {
   height: 100%;
   width: 100%;
   scroll-snap-align: center;
-  overflow: hidden;
 }
 
 a,
 ul,
 button {
   cursor: pointer;
-}
-
-.position_center {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.navlinks_transition {
-  transition: .5s;
-}
-
-.link:hover .link:last-child {
-  color: gray;
-}
-
-.custom-border:before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  height: 60%;
-  width: .5px;
-  background-color: var(--wb-grey-45);
-}
-
-.imghover:hover img{
-  transform: scale(1.1);
 }
 
 :root {

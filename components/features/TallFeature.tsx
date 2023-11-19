@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
+import Cursor from "../Cursor";
 
 interface Feature {
   title: string;
@@ -28,10 +29,18 @@ function TallFeature({ title, description, image, alt, titlebig }: Feature) {
     }
   }, [isInview]);
 
+  const [cursorVariant, setcursorVariant] = useState("default");
+
+  const imageEnter = () => {
+    setcursorVariant("image");
+  };
+
+  const imageLeave = () => {
+    setcursorVariant("default");
+  };
+
   return (
-    <div
-      className="relative w-[400px] flex flex-col cursor-pointer overflow-hidden imghover"
-    >
+    <div className="relative w-[400px] flex flex-col cursor-pointer overflow-hidden imghover">
       <div
         className={`absolute top-0 bg-white w-full ${titlebig} h-24 flex flex-col gap-5 z-10`}
       >
@@ -55,7 +64,14 @@ function TallFeature({ title, description, image, alt, titlebig }: Feature) {
         </div>
       </div>
 
-      <div className="overflow-hidden" ref={ref}>
+      <div
+        className="overflow-hidden"
+        onMouseEnter={imageEnter}
+        onMouseLeave={imageLeave}
+        ref={ref}
+      >
+        <Cursor cursorVariant={cursorVariant}></Cursor>
+
         <motion.img
           initial={{ height: 0 }}
           animate={heightcontrols}

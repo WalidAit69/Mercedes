@@ -4,7 +4,7 @@ import SmFeature from "../features/SmFeature";
 
 function Features() {
   return (
-    <div className="my-44 flex justify-center">
+    <section className="my-44 flex justify-center">
       <div className="grid gap-y-40 grid-cols-2">
         <div>
           <TallFeature
@@ -49,7 +49,7 @@ function Features() {
           />
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

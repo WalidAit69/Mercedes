@@ -1,7 +1,9 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
+import Cursor from "../Cursor";
+import { useScrollDirection } from "@/hooks/UseScroll";
 
 interface Feature {
   title: string;
@@ -27,8 +29,18 @@ function SmFeature({ title, description, image, alt }: Feature) {
     }
   }, [isInview]);
 
+  const [cursorVariant, setcursorVariant] = useState("default");
+
+  const imageEnter = () => {
+    setcursorVariant("image");
+  };
+
+  const imageLeave = () => {
+    setcursorVariant("default");
+  };
+
   return (
-    <div className="relative flex flex-col w-[500px] cursor-pointer imghover">
+    <div className="relative flex flex-col w-[500px] cursor-pointer imghover overflow-hidden">
       <div className="bg-white w-full h-24 flex flex-col gap-5">
         <motion.h3
           initial={{ opacity: 0 }}
@@ -49,7 +61,14 @@ function SmFeature({ title, description, image, alt }: Feature) {
         </div>
       </div>
 
-      <div className="relative overflow-hidden" ref={ref}>
+      <div
+        className="relative overflow-hidden z-20"
+        ref={ref}
+        onMouseEnter={imageEnter}
+        onMouseLeave={imageLeave}
+      >
+        <Cursor cursorVariant={cursorVariant}></Cursor>
+
         <motion.img
           initial={{ height: 0 }}
           animate={heightcontrols}
