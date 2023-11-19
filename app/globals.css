@@ -10,13 +10,13 @@
 }
 
 html {
-  scroll-snap-type: y mandatory;
+  scroll-snap-type: y;
   scroll-behavior: smooth;
 }
 
 main {
   height: 100%;
-  width: 100vw;
+  width: 100%;
   scroll-snap-align: center;
   overflow: hidden;
 }
@@ -51,6 +51,10 @@ button {
   height: 60%;
   width: .5px;
   background-color: var(--wb-grey-45);
+}
+
+.imghover:hover img{
+  transform: scale(1.1);
 }
 
 :root {
