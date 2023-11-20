@@ -6,6 +6,7 @@ import Features from "@/components/MainPages/Features";
 import Masterpiece from "@/components/MainPages/Masterpiece";
 import MainPageMaybach from "@/components/MainPages/Maybach";
 import SocialsBanner from "@/components/SocialsBanner";
+import Footer from "@/components/footers/Footer";
 import FooterMenu from "@/components/footers/FooterMenu";
 import { useState } from "react";
 
@@ -19,6 +20,7 @@ export default function Home() {
       <Masterpiece/>
       <SocialsBanner/>
       <FooterMenu/>
+      <Footer/>
     </div>
   );
 }
