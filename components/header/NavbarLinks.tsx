@@ -3,8 +3,15 @@
 import { useScrollDirection } from "@/hooks/UseScroll";
 import { motion, useAnimation } from "framer-motion";
 import React, { useState, useEffect, useRef } from "react";
+import SearchMenu from "./SearchMenu";
 
-function NavbarLinks({ showLinks }: { showLinks: boolean }) {
+function NavbarLinks({
+  showLinks,
+  showSearchMenu,
+}: {
+  showLinks: boolean;
+  showSearchMenu: boolean;
+}) {
   const ref = useRef(null);
   const [hoveredLink, setHoveredLink] = useState(0);
 
@@ -25,14 +32,17 @@ function NavbarLinks({ showLinks }: { showLinks: boolean }) {
     heightcontrols.start({ height: "64px" });
     positioncontrols.start({ y: 0, opacity: 1 });
 
-    if (showLinks || scrollDirection === "up") {
+    if (showSearchMenu) {
+      positioncontrols.start({ y: -45, opacity: 0 });
+      heightcontrols.start({ height: "91vh" });
+    } else if (showLinks || scrollDirection === "up") {
       heightcontrols.start({ height: "64px" });
       positioncontrols.start({ y: 0, opacity: 1 });
     } else if (!showLinks && scrollDirection === "down") {
       heightcontrols.start({ height: 0 });
       positioncontrols.start({ y: -40, opacity: 1 });
     }
-  }, [heightcontrols, positioncontrols, showLinks, scrollDirection]);
+  }, [showLinks, scrollDirection, showSearchMenu]);
 
   return (
     <motion.nav
@@ -41,6 +51,7 @@ function NavbarLinks({ showLinks }: { showLinks: boolean }) {
       transition={{ duration: 0.5, delay: 0.2, ease: [0.8, 0, 0, 0.8] }}
       className="bg-black bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-80 text-white flex items-center justify-center h-16 top-[64px] w-full z-10"
     >
+      <>{showSearchMenu && <SearchMenu />}</>
       <ul className="flex items-center space-x-16">
         <motion.li
           initial={{ y: -40, opacity: 0 }}

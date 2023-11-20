@@ -1,28 +1,35 @@
 "use client";
 
-import { Search, ChevronDown } from "lucide-react";
+import { Search, ChevronDown, ChevronUp, X } from "lucide-react";
 import Image from "next/image";
 import NavbarLinks from "./NavbarLinks";
 import { motion, useAnimation, useInView } from "framer-motion";
 import React, { useState, useEffect } from "react";
 import { useScrollDirection } from "@/hooks/UseScroll";
 import Link from "next/link";
+import LoginDropdown from "./LoginDropdown";
 
 function Navbar() {
   const [showLinks, setshowLinks] = useState(false);
+  const [showLoginMenu, setshowLoginMenu] = useState(false);
+  const [showSearchMenu, setshowSearchMenu] = useState(false);
 
   const positioncontrols = useAnimation();
+  const closecontrols = useAnimation();
   const scrollDirection = useScrollDirection();
 
   useEffect(() => {
     positioncontrols.start({ y: 0, opacity: 1 });
 
-    if (showLinks || scrollDirection === "up") {
+    if (showSearchMenu) {
+      positioncontrols.start({ y: -40, opacity: 1 });
+      closecontrols.start({ y: 0, opacity: 1, display: "flex" });
+    } else if (showLinks || scrollDirection === "up") {
       positioncontrols.start({ y: 0, opacity: 1 });
     } else if (!showLinks && scrollDirection === "down") {
       positioncontrols.start({ y: -40, opacity: 1 });
     }
-  }, [positioncontrols, showLinks, scrollDirection]);
+  }, [positioncontrols, showLinks, scrollDirection, showSearchMenu]);
 
   return (
     <header
@@ -55,11 +62,22 @@ function Navbar() {
             transition={{ duration: 0.5, ease: [0.8, 0, 0, 0.8] }}
             className="flex gap-10"
           >
-            <button className="flex items-center gap-1 hover:text-white transition-colors navlinks_transition">
+            <button
+              onClick={() => setshowSearchMenu(true)}
+              className="flex items-center gap-1 hover:text-white transition-colors navlinks_transition"
+            >
               Search <Search width={14} />
             </button>
-            <button className="flex items-center gap-1 hover:text-white transition-colors navlinks_transition">
-              Login <ChevronDown width={17} />{" "}
+            <button
+              onClick={() => setshowLoginMenu(!showLoginMenu)}
+              className="flex items-center gap-1 hover:text-white transition-colors navlinks_transition"
+            >
+              Login{" "}
+              {!showLoginMenu ? (
+                <ChevronDown width={17} />
+              ) : (
+                <ChevronUp width={17} />
+              )}{" "}
             </button>
           </motion.div>
         </div>
@@ -67,9 +85,25 @@ function Navbar() {
         <Link href={"/"} className="position_center">
           <Image src={"/logo.svg"} alt="mercedes-star" width={45} height={45} />
         </Link>
+
+        {showSearchMenu && (
+          <>
+            <motion.button
+              animate={closecontrols}
+              initial={{ y: 40, opacity: 0, display: "none" }}
+              transition={{ duration: 0.5, delay: 0.5, ease: [0.8, 0, 0, 0.8] }}
+              onClick={() => setshowSearchMenu(false)}
+              className="flex items-center gap-1 hover:text-white transition-colors"
+            >
+              Close Search <X size={14} />
+            </motion.button>
+          </>
+        )}
+
+        {showLoginMenu && <LoginDropdown />}
       </nav>
 
-      <NavbarLinks showLinks={showLinks} />
+      <NavbarLinks showLinks={showLinks} showSearchMenu={showSearchMenu} />
     </header>
   );
 }
