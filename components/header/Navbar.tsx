@@ -6,6 +6,7 @@ import NavbarLinks from "./NavbarLinks";
 import { motion, useAnimation, useInView } from "framer-motion";
 import React, { useState, useEffect } from "react";
 import { useScrollDirection } from "@/hooks/UseScroll";
+import Link from "next/link";
 
 function Navbar() {
   const [showLinks, setshowLinks] = useState(false);
@@ -63,9 +64,9 @@ function Navbar() {
           </motion.div>
         </div>
 
-        <div className="position_center">
+        <Link href={"/"} className="position_center">
           <Image src={"/logo.svg"} alt="mercedes-star" width={45} height={45} />
-        </div>
+        </Link>
       </nav>
 
       <NavbarLinks showLinks={showLinks} />

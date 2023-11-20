@@ -27,3 +27,17 @@
 .imghover:hover img {
   transform: scale(1.1);
 }
+
+.footerlinks li,h1{
+  transition: .5s;
+}
+
+.footerlinks li:hover{
+  transition: .5s;
+  color: white;
+}
+
+.footerlinks h1:hover{
+  transition: .5s;
+  color: white !important;
+}
