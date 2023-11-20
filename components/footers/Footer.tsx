@@ -13,7 +13,7 @@ function Footer() {
             <li>Cookies</li>
             <li>Privacy</li>
             <li>Contact</li>
-            <li>Don't Sell My Personal Information (CCPA)</li>
+            <li>Don&apos;t Sell My Personal Information (CCPA)</li>
           </ul>
           <ul className="flex">
             <a className="pr-2 hover:text-white transition-colors navlinks_transition">
