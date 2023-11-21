@@ -64,6 +64,7 @@ function ArtCulture({ setShowMenu }: { setShowMenu: any }) {
         <div className="grid grid-cols-3 gap-24">
           {Cards.map((card) => (
             <MenuSmCard
+              key={card.title}
               title={card.title}
               categorie={card.categorie}
               image={card.image}
