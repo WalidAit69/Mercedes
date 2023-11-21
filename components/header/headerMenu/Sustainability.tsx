@@ -5,38 +5,18 @@ import { motion } from "framer-motion";
 
 const Cards = [
   {
-    title: "Mercedes-Benz X Esports",
-    categorie: "zeitgeist",
-    image: "/Menu/artandculture1.avif",
+    title: "Land. Sea. Air.",
+    categorie: "Environment",
+    image: "/Menu/sustainibility1.avif",
   },
   {
-    title: "A Mercedes-Benz and Moncler voyage",
-    categorie: "zeitgeist",
-    image: "/Menu/artandculture2.avif",
-  },
-  {
-    title: "Mercedes-Benz and Superplastic",
-    categorie: "zeitgeist",
-    image: "/Menu/artandculture3.avif",
-  },
-  {
-    title: "Today at the Museum",
-    categorie: "exhibitions",
-    image: "/Menu/artandculture4.avif",
-  },
-  {
-    title: "Classic Car Travel",
-    categorie: "events",
-    image: "/Menu/artandculture5.avif",
-  },
-  {
-    title: "On the Move",
-    categorie: "special exhibition",
-    image: "/Menu/artandculture6.avif",
+    title: "Inclusion is unstoppable",
+    categorie: "Responsibility",
+    image: "/Menu/sustainibility2.avif",
   },
 ];
 
-function ArtCulture({
+function Sustainability({
   setShowMenu,
   setMenuType,
   setHoveredLink,
@@ -52,7 +32,7 @@ function ArtCulture({
   }
   return (
     <>
-      <div className="absolute left-[30%] top-[15%] flex">
+      <div className="absolute left-[37%] top-[15%] flex">
         <motion.ul
           initial={{ y: 40, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -60,13 +40,10 @@ function ArtCulture({
           className="flex items-center gap-7"
         >
           <li className="text-[var(--wb-grey-50)] hover:text-white transition-colors navlinks_transition">
-            Zeitgeist
+            Environment
           </li>
           <li className="text-[var(--wb-grey-50)] hover:text-white transition-colors navlinks_transition">
-            Events & Exhibitions
-          </li>
-          <li className="text-[var(--wb-grey-50)] hover:text-white transition-colors navlinks_transition">
-            Mercedes-Benz Museum
+            Responsibility
           </li>
         </motion.ul>
       </div>
@@ -79,16 +56,16 @@ function ArtCulture({
       >
         <X />
       </motion.div>
-      <div className="absolute top-[30%] left-[12%]">
-        <div className="grid grid-cols-3 gap-24">
+      <div className="absolute top-[25%] left-[3%]">
+        <div className="grid grid-cols-2 gap-24 h-[400px]">
           {Cards.map((card) => (
             <MenuSmCard
               key={card.title}
               title={card.title}
               categorie={card.categorie}
               image={card.image}
-              width="270px"
-              height="130px"
+              width="600px"
+              height="400px"
             />
           ))}
         </div>
@@ -97,4 +74,4 @@ function ArtCulture({
   );
 }
 
-export default ArtCulture;
+export default Sustainability;

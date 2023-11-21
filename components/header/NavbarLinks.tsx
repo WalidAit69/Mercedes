@@ -5,6 +5,7 @@ import { motion, useAnimation } from "framer-motion";
 import React, { useState, useEffect, useRef } from "react";
 import SearchMenu from "./SearchMenu";
 import ArtCulture from "./headerMenu/ArtCulture";
+import Sustainability from "./headerMenu/Sustainability";
 
 function NavbarLinks({
   showLinks,
@@ -13,17 +14,26 @@ function NavbarLinks({
   showLinks: boolean;
   showSearchMenu: boolean;
 }) {
-  const ref = useRef(null);
   const [hoveredLink, setHoveredLink] = useState(0);
 
   const [ShowMenu, setShowMenu] = useState(false);
 
-  const handleLinkHover = (index: number) => {
-    setHoveredLink(index);
+  const [MenuType, setMenuType] = useState("");
+
+  const handleLinkHover = (e: any, index: number) => {
+    if (!ShowMenu) {
+      setHoveredLink(index);
+    } else {
+      e.currentTarget.style.color = "white";
+    }
   };
 
-  const handleLinkLeave = () => {
-    setHoveredLink(0);
+  const handleLinkLeave = (e: any, index: number) => {
+    if (!ShowMenu) {
+      setHoveredLink(0);
+    } else if (hoveredLink !== index) {
+      e.currentTarget.style.color = "gray";
+    }
   };
 
   const heightcontrols = useAnimation();
@@ -49,11 +59,17 @@ function NavbarLinks({
     }
   }, [showLinks, scrollDirection, showSearchMenu, ShowMenu]);
 
+  function GetMenuType(e: any, index: number) {
+    setShowMenu(true);
+    setMenuType(e.currentTarget.getAttribute("value"));
+    setHoveredLink(index);
+  }
+
   return (
     <motion.nav
       initial={{ height: 0 }}
       animate={heightcontrols}
-      transition={{ duration: 0.5, delay: 0.2, }}
+      transition={{ duration: 0.5, delay: 0.2 }}
       className="bg-black bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-80 text-white flex justify-center h-16 top-[64px] w-full z-10"
     >
       {showSearchMenu && <SearchMenu />}
@@ -67,10 +83,11 @@ function NavbarLinks({
           initial={{ y: -40, opacity: 0 }}
           animate={positioncontrols}
           transition={{ duration: 0.3, ease: [0.8, 0, 0, 0.8] }}
-          className="link transition-colors navlinks_transition text-white"
-          onMouseEnter={() => handleLinkHover(1)}
-          onMouseLeave={() => handleLinkLeave()}
-          onClick={() => setShowMenu(true)}
+          className="link transition-colors navlinks_transition"
+          onMouseEnter={(e) => handleLinkHover(e, 1)}
+          onMouseLeave={(e) => handleLinkLeave(e, 1)}
+          value={"Art&Culture"}
+          onClick={(e) => GetMenuType(e, 1)}
           style={{
             color:
               hoveredLink === 1
@@ -88,8 +105,10 @@ function NavbarLinks({
           animate={positioncontrols}
           transition={{ duration: 0.3, ease: [0.8, 0, 0, 0.8] }}
           className="link transition-colors navlinks_transition"
-          onMouseEnter={() => handleLinkHover(2)}
-          onMouseLeave={() => handleLinkLeave()}
+          onMouseEnter={(e) => handleLinkHover(e, 2)}
+          onMouseLeave={(e) => handleLinkLeave(e, 2)}
+          value={"Sustainability"}
+          onClick={(e) => GetMenuType(e, 2)}
           style={{
             color:
               hoveredLink === 2
@@ -107,8 +126,10 @@ function NavbarLinks({
           animate={positioncontrols}
           transition={{ duration: 0.3, ease: [0.8, 0, 0, 0.8] }}
           className="link transition-colors navlinks_transition"
-          onMouseEnter={() => handleLinkHover(3)}
-          onMouseLeave={() => handleLinkLeave()}
+          onMouseEnter={(e) => handleLinkHover(e, 3)}
+          onMouseLeave={(e) => handleLinkLeave(e, 3)}
+          onClick={(e) => GetMenuType(e, 3)}
+          value={"Design"}
           style={{
             color:
               hoveredLink === 3
@@ -126,8 +147,10 @@ function NavbarLinks({
           animate={positioncontrols}
           transition={{ duration: 0.3, ease: [0.8, 0, 0, 0.8] }}
           className="link transition-colors navlinks_transition"
-          onMouseEnter={() => handleLinkHover(4)}
-          onMouseLeave={() => handleLinkLeave()}
+          onMouseEnter={(e) => handleLinkHover(e, 4)}
+          onMouseLeave={(e) => handleLinkLeave(e, 4)}
+          onClick={(e) => GetMenuType(e, 4)}
+          value={"Innovation"}
           style={{
             color:
               hoveredLink === 4
@@ -145,8 +168,10 @@ function NavbarLinks({
           animate={positioncontrols}
           transition={{ duration: 0.3, ease: [0.8, 0, 0, 0.8] }}
           className="link transition-colors navlinks_transition"
-          onMouseEnter={() => handleLinkHover(5)}
-          onMouseLeave={() => handleLinkLeave()}
+          onMouseEnter={(e) => handleLinkHover(e, 5)}
+          onMouseLeave={(e) => handleLinkLeave(e, 5)}
+          onClick={(e) => GetMenuType(e, 5)}
+          value={"Exclusive"}
           style={{
             color:
               hoveredLink === 5
@@ -164,8 +189,10 @@ function NavbarLinks({
           animate={positioncontrols}
           transition={{ duration: 0.3, ease: [0.8, 0, 0, 0.8] }}
           className="link transition-colors navlinks_transition"
-          onMouseEnter={() => handleLinkHover(6)}
-          onMouseLeave={() => handleLinkLeave()}
+          onMouseEnter={(e) => handleLinkHover(e, 6)}
+          onMouseLeave={(e) => handleLinkLeave(e, 6)}
+          onClick={(e) => GetMenuType(e, 6)}
+          value={"Vehicles"}
           style={{
             color:
               hoveredLink === 6
@@ -178,7 +205,21 @@ function NavbarLinks({
           Vehicles
         </motion.li>
 
-        {ShowMenu && <ArtCulture setShowMenu={setShowMenu} />}
+        {MenuType === "Art&Culture" && (
+          <ArtCulture
+            setShowMenu={setShowMenu}
+            setMenuType={setMenuType}
+            setHoveredLink={setHoveredLink}
+          />
+        )}
+
+        {MenuType === "Sustainability" && (
+          <Sustainability
+            setShowMenu={setShowMenu}
+            setMenuType={setMenuType}
+            setHoveredLink={setHoveredLink}
+          />
+        )}
       </ul>
     </motion.nav>
   );
