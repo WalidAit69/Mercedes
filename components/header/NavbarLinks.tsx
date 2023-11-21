@@ -8,6 +8,7 @@ import ArtCulture from "./headerMenu/ArtCulture";
 import Sustainability from "./headerMenu/Sustainability";
 import Design from "./headerMenu/Design";
 import Innovation from "./headerMenu/Innovation";
+import Exclusive from "./headerMenu/Exclusive";
 
 function NavbarLinks({
   showLinks,
@@ -233,6 +234,14 @@ function NavbarLinks({
 
         {MenuType === "Innovation" && (
           <Innovation
+            setShowMenu={setShowMenu}
+            setMenuType={setMenuType}
+            setHoveredLink={setHoveredLink}
+          />
+        )}
+
+        {MenuType === "Exclusive" && (
+          <Exclusive
             setShowMenu={setShowMenu}
             setMenuType={setMenuType}
             setHoveredLink={setHoveredLink}
