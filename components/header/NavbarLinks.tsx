@@ -9,6 +9,7 @@ import Sustainability from "./headerMenu/Sustainability";
 import Design from "./headerMenu/Design";
 import Innovation from "./headerMenu/Innovation";
 import Exclusive from "./headerMenu/Exclusive";
+import Vehicles from "./headerMenu/Vehicles";
 
 function NavbarLinks({
   showLinks,
@@ -242,6 +243,14 @@ function NavbarLinks({
 
         {MenuType === "Exclusive" && (
           <Exclusive
+            setShowMenu={setShowMenu}
+            setMenuType={setMenuType}
+            setHoveredLink={setHoveredLink}
+          />
+        )}
+
+        {MenuType === "Vehicles" && (
+          <Vehicles
             setShowMenu={setShowMenu}
             setMenuType={setMenuType}
             setHoveredLink={setHoveredLink}
