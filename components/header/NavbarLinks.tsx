@@ -4,6 +4,7 @@ import { useScrollDirection } from "@/hooks/UseScroll";
 import { motion, useAnimation } from "framer-motion";
 import React, { useState, useEffect, useRef } from "react";
 import SearchMenu from "./SearchMenu";
+import ArtCulture from "./headerMenu/ArtCulture";
 
 function NavbarLinks({
   showLinks,
@@ -14,6 +15,8 @@ function NavbarLinks({
 }) {
   const ref = useRef(null);
   const [hoveredLink, setHoveredLink] = useState(0);
+
+  const [ShowMenu, setShowMenu] = useState(false);
 
   const handleLinkHover = (index: number) => {
     setHoveredLink(index);
@@ -32,7 +35,9 @@ function NavbarLinks({
     heightcontrols.start({ height: "64px" });
     positioncontrols.start({ y: 0, opacity: 1 });
 
-    if (showSearchMenu) {
+    if (ShowMenu) {
+      heightcontrols.start({ height: "91vh" });
+    } else if (showSearchMenu) {
       positioncontrols.start({ y: -45, opacity: 0 });
       heightcontrols.start({ height: "91vh" });
     } else if (showLinks || scrollDirection === "up") {
@@ -42,24 +47,30 @@ function NavbarLinks({
       heightcontrols.start({ height: 0 });
       positioncontrols.start({ y: -40, opacity: 1 });
     }
-  }, [showLinks, scrollDirection, showSearchMenu]);
+  }, [showLinks, scrollDirection, showSearchMenu, ShowMenu]);
 
   return (
     <motion.nav
       initial={{ height: 0 }}
       animate={heightcontrols}
-      transition={{ duration: 0.5, delay: 0.2, ease: [0.8, 0, 0, 0.8] }}
-      className="bg-black bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-80 text-white flex items-center justify-center h-16 top-[64px] w-full z-10"
+      transition={{ duration: 0.5, delay: 0.2, }}
+      className="bg-black bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-80 text-white flex justify-center h-16 top-[64px] w-full z-10"
     >
-      <>{showSearchMenu && <SearchMenu />}</>
-      <ul className="flex items-center space-x-16">
+      {showSearchMenu && <SearchMenu />}
+      <ul
+        className="flex h-fit w-full justify-center pb-4 mt-4 space-x-16"
+        style={{
+          borderBottom: ShowMenu ? `1px solid rgba(99, 99, 99, 0.167)` : "",
+        }}
+      >
         <motion.li
           initial={{ y: -40, opacity: 0 }}
           animate={positioncontrols}
-          transition={{ duration: 0.5, ease: [0.8, 0, 0, 0.8] }}
+          transition={{ duration: 0.3, ease: [0.8, 0, 0, 0.8] }}
           className="link transition-colors navlinks_transition text-white"
           onMouseEnter={() => handleLinkHover(1)}
           onMouseLeave={() => handleLinkLeave()}
+          onClick={() => setShowMenu(true)}
           style={{
             color:
               hoveredLink === 1
@@ -75,7 +86,7 @@ function NavbarLinks({
         <motion.li
           initial={{ y: -40, opacity: 0 }}
           animate={positioncontrols}
-          transition={{ duration: 0.5, ease: [0.8, 0, 0, 0.8] }}
+          transition={{ duration: 0.3, ease: [0.8, 0, 0, 0.8] }}
           className="link transition-colors navlinks_transition"
           onMouseEnter={() => handleLinkHover(2)}
           onMouseLeave={() => handleLinkLeave()}
@@ -94,7 +105,7 @@ function NavbarLinks({
         <motion.li
           initial={{ y: -40, opacity: 0 }}
           animate={positioncontrols}
-          transition={{ duration: 0.5, ease: [0.8, 0, 0, 0.8] }}
+          transition={{ duration: 0.3, ease: [0.8, 0, 0, 0.8] }}
           className="link transition-colors navlinks_transition"
           onMouseEnter={() => handleLinkHover(3)}
           onMouseLeave={() => handleLinkLeave()}
@@ -113,7 +124,7 @@ function NavbarLinks({
         <motion.li
           initial={{ y: -40, opacity: 0 }}
           animate={positioncontrols}
-          transition={{ duration: 0.5, ease: [0.8, 0, 0, 0.8] }}
+          transition={{ duration: 0.3, ease: [0.8, 0, 0, 0.8] }}
           className="link transition-colors navlinks_transition"
           onMouseEnter={() => handleLinkHover(4)}
           onMouseLeave={() => handleLinkLeave()}
@@ -132,7 +143,7 @@ function NavbarLinks({
         <motion.li
           initial={{ y: -40, opacity: 0 }}
           animate={positioncontrols}
-          transition={{ duration: 0.5, ease: [0.8, 0, 0, 0.8] }}
+          transition={{ duration: 0.3, ease: [0.8, 0, 0, 0.8] }}
           className="link transition-colors navlinks_transition"
           onMouseEnter={() => handleLinkHover(5)}
           onMouseLeave={() => handleLinkLeave()}
@@ -151,7 +162,7 @@ function NavbarLinks({
         <motion.li
           initial={{ y: -40, opacity: 0 }}
           animate={positioncontrols}
-          transition={{ duration: 0.5, ease: [0.8, 0, 0, 0.8] }}
+          transition={{ duration: 0.3, ease: [0.8, 0, 0, 0.8] }}
           className="link transition-colors navlinks_transition"
           onMouseEnter={() => handleLinkHover(6)}
           onMouseLeave={() => handleLinkLeave()}
@@ -166,6 +177,8 @@ function NavbarLinks({
         >
           Vehicles
         </motion.li>
+
+        {ShowMenu && <ArtCulture setShowMenu={setShowMenu} />}
       </ul>
     </motion.nav>
   );

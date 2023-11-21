@@ -28,6 +28,10 @@
   transform: scale(1.1);
 }
 
+.menuhover:hover p {
+  color: white;
+}
+
 .footerlinks li,
 h1 {
   transition: .5s;
@@ -50,3 +54,4 @@ h1 {
 #myContainer:focus-within {
   border: 2px solid #007bff;
 }
+
