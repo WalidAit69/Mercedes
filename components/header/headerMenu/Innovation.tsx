@@ -69,7 +69,6 @@ function Innovation({
             <div
               key={card.title}
               style={{
-                gridColumn: index === 0 ? "span 1" : "span 1",
                 gridRow: index === 0 ? "span 2" : "auto",
                 marginLeft: index !== 0 ? "100px" : "0",
               }}
