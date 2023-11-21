@@ -6,6 +6,8 @@ import React, { useState, useEffect, useRef } from "react";
 import SearchMenu from "./SearchMenu";
 import ArtCulture from "./headerMenu/ArtCulture";
 import Sustainability from "./headerMenu/Sustainability";
+import Design from "./headerMenu/Design";
+import Innovation from "./headerMenu/Innovation";
 
 function NavbarLinks({
   showLinks,
@@ -215,6 +217,22 @@ function NavbarLinks({
 
         {MenuType === "Sustainability" && (
           <Sustainability
+            setShowMenu={setShowMenu}
+            setMenuType={setMenuType}
+            setHoveredLink={setHoveredLink}
+          />
+        )}
+
+        {MenuType === "Design" && (
+          <Design
+            setShowMenu={setShowMenu}
+            setMenuType={setMenuType}
+            setHoveredLink={setHoveredLink}
+          />
+        )}
+
+        {MenuType === "Innovation" && (
+          <Innovation
             setShowMenu={setShowMenu}
             setMenuType={setMenuType}
             setHoveredLink={setHoveredLink}

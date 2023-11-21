@@ -10,8 +10,14 @@ interface MenuSmCard {
 }
 function MenuSmCard({ title, categorie, image, width, height }: MenuSmCard) {
   return (
-    <div className="relative menuhover imghover">
-      <div className="relative overflow-hidden" style={{ width: `${width}` }}>
+    <div
+      className="relative menuhover imghover"
+      style={{ height: `${height}`, width: `${width}` }}
+    >
+      <div
+        className="relative overflow-hidden"
+        style={{ height: `${height}`, width: `${width}` }}
+      >
         <motion.img
           initial={{ height: 0 }}
           animate={{ height: `${height}` }}
@@ -25,8 +31,8 @@ function MenuSmCard({ title, categorie, image, width, height }: MenuSmCard) {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 1, ease: [0.8, 0, 0, 0.8] }}
-        className="bg-gradient-to-t from-black to-transparent h-full w-full absolute inset-0 opacity-100"
+        transition={{ duration: 0.5, delay: 1.2, ease: [0.8, 0, 0, 0.8] }}
+        className="bg-gradient-to-t from-black to-transparent w-full h-full absolute inset-0 opacity-100"
       ></motion.div>
 
       <div className="absolute text-center -bottom-10 left-1/2 -translate-x-1/2 flex flex-col gap-3">
