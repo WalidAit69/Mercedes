@@ -14,9 +14,11 @@ import Vehicles from "./headerMenu/Vehicles";
 function NavbarLinks({
   showLinks,
   showSearchMenu,
+  CloseSearchMenu,
 }: {
   showLinks: boolean;
   showSearchMenu: boolean;
+  CloseSearchMenu: boolean;
 }) {
   const [hoveredLink, setHoveredLink] = useState(0);
 
@@ -57,7 +59,9 @@ function NavbarLinks({
     heightcontrols.start({ height: "64px" });
     positioncontrols.start({ y: 0, opacity: 1 });
 
-    if (ShowMenu) {
+    if (CloseSearchMenu) {
+      heightcontrols.start({ height: 0 });
+    } else if (ShowMenu) {
       heightcontrols.start({ height: "91vh" });
     } else if (showSearchMenu) {
       positioncontrols.start({ y: -45, opacity: 0 });
@@ -69,7 +73,7 @@ function NavbarLinks({
       heightcontrols.start({ height: 0 });
       positioncontrols.start({ y: -40, opacity: 1 });
     }
-  }, [showLinks, scrollDirection, showSearchMenu, ShowMenu]);
+  }, [showLinks, scrollDirection, showSearchMenu, ShowMenu, CloseSearchMenu]);
 
   function GetMenuType(e: any, index: number) {
     setShowMenu(true);
@@ -86,7 +90,7 @@ function NavbarLinks({
     >
       {showSearchMenu && <SearchMenu />}
       <ul
-        className="flex h-fit w-full justify-center pb-4 mt-4 space-x-16"
+        className="flex h-fit w-full justify-center pb-4 mt-4 space-x-16 max-lg:hidden"
         style={{
           borderBottom: ShowMenu ? `1px solid rgba(99, 99, 99, 0.167)` : "",
         }}
@@ -95,7 +99,7 @@ function NavbarLinks({
           initial={{ y: -40, opacity: 0 }}
           animate={positioncontrols}
           transition={{ duration: 0.3, ease: [0.8, 0, 0, 0.8] }}
-          className="link transition-colors navlinks_transition"
+          className="link transition-colors navlinks_transition max-lg:hidden"
           onMouseEnter={(e) => handleLinkHover(e, 1)}
           onMouseLeave={(e) => handleLinkLeave(e, 1)}
           value={"Art&Culture"}
@@ -116,7 +120,7 @@ function NavbarLinks({
           initial={{ y: -40, opacity: 0 }}
           animate={positioncontrols}
           transition={{ duration: 0.3, ease: [0.8, 0, 0, 0.8] }}
-          className="link transition-colors navlinks_transition"
+          className="link transition-colors navlinks_transition max-lg:hidden"
           onMouseEnter={(e) => handleLinkHover(e, 2)}
           onMouseLeave={(e) => handleLinkLeave(e, 2)}
           value={"Sustainability"}
@@ -137,7 +141,7 @@ function NavbarLinks({
           initial={{ y: -40, opacity: 0 }}
           animate={positioncontrols}
           transition={{ duration: 0.3, ease: [0.8, 0, 0, 0.8] }}
-          className="link transition-colors navlinks_transition"
+          className="link transition-colors navlinks_transition max-lg:hidden"
           onMouseEnter={(e) => handleLinkHover(e, 3)}
           onMouseLeave={(e) => handleLinkLeave(e, 3)}
           onClick={(e) => GetMenuType(e, 3)}
@@ -158,7 +162,7 @@ function NavbarLinks({
           initial={{ y: -40, opacity: 0 }}
           animate={positioncontrols}
           transition={{ duration: 0.3, ease: [0.8, 0, 0, 0.8] }}
-          className="link transition-colors navlinks_transition"
+          className="link transition-colors navlinks_transition max-lg:hidden"
           onMouseEnter={(e) => handleLinkHover(e, 4)}
           onMouseLeave={(e) => handleLinkLeave(e, 4)}
           onClick={(e) => GetMenuType(e, 4)}
@@ -179,7 +183,7 @@ function NavbarLinks({
           initial={{ y: -40, opacity: 0 }}
           animate={positioncontrols}
           transition={{ duration: 0.3, ease: [0.8, 0, 0, 0.8] }}
-          className="link transition-colors navlinks_transition"
+          className="link transition-colors navlinks_transition max-lg:hidden"
           onMouseEnter={(e) => handleLinkHover(e, 5)}
           onMouseLeave={(e) => handleLinkLeave(e, 5)}
           onClick={(e) => GetMenuType(e, 5)}
@@ -200,7 +204,7 @@ function NavbarLinks({
           initial={{ y: -40, opacity: 0 }}
           animate={positioncontrols}
           transition={{ duration: 0.3, ease: [0.8, 0, 0, 0.8] }}
-          className="link transition-colors navlinks_transition"
+          className="link transition-colors navlinks_transition max-lg:hidden"
           onMouseEnter={(e) => handleLinkHover(e, 6)}
           onMouseLeave={(e) => handleLinkLeave(e, 6)}
           onClick={(e) => GetMenuType(e, 6)}
@@ -217,6 +221,7 @@ function NavbarLinks({
           Vehicles
         </motion.li>
       </ul>
+
       {MenuType === "Art&Culture" && (
         <ArtCulture
           setShowMenu={setShowMenu}

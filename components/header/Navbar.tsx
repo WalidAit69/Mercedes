@@ -13,6 +13,7 @@ function Navbar() {
   const [showLinks, setshowLinks] = useState(false);
   const [showLoginMenu, setshowLoginMenu] = useState(false);
   const [showSearchMenu, setshowSearchMenu] = useState(false);
+  const [CloseSearchMenu, setCloseSearchMenu] = useState(false);
 
   const positioncontrols = useAnimation();
   const closecontrols = useAnimation();
@@ -31,13 +32,38 @@ function Navbar() {
     }
   }, [positioncontrols, showLinks, scrollDirection, showSearchMenu]);
 
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+  const handleResize = () => {
+    setScreenWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  function OpenSearch() {
+    setshowSearchMenu(true);
+    setCloseSearchMenu(false);
+  }
+
+  function CloseSearch() {
+    setshowSearchMenu(false);
+    if (screenWidth <= 1024) {
+      setCloseSearchMenu(true);
+    }
+  }
   return (
     <header
       onMouseEnter={() => setshowLinks(true)}
       onMouseLeave={() => setshowLinks(false)}
       className="flex flex-col z-50 fixed w-[100vw] top-0 left-0"
     >
-      <nav className="flex bg-black text-[var(--wb-grey-45)] justify-between items-center px-14 text-xs h-16 relative z-30">
+      <nav className="flex bg-black text-[var(--wb-grey-45)] justify-between items-center px-14 max-sm:px-4 text-xs h-16 relative z-30">
         <div className="max-lg:hidden">
           <motion.ul
             className="flex"
@@ -63,7 +89,7 @@ function Navbar() {
             className="flex gap-10"
           >
             <button
-              onClick={() => setshowSearchMenu(true)}
+              onClick={OpenSearch}
               className="flex items-center gap-1 hover:text-white transition-colors navlinks_transition"
             >
               Search <Search width={14} />
@@ -92,7 +118,7 @@ function Navbar() {
               animate={closecontrols}
               initial={{ y: 40, opacity: 0, display: "none" }}
               transition={{ duration: 0.5, delay: 0.5, ease: [0.8, 0, 0, 0.8] }}
-              onClick={() => setshowSearchMenu(false)}
+              onClick={CloseSearch}
               className="flex items-center gap-1 hover:text-white transition-colors"
             >
               Close Search <X size={14} />
@@ -103,7 +129,11 @@ function Navbar() {
         {showLoginMenu && <LoginDropdown />}
       </nav>
 
-      <NavbarLinks showLinks={showLinks} showSearchMenu={showSearchMenu} />
+      <NavbarLinks
+        showLinks={showLinks}
+        showSearchMenu={showSearchMenu}
+        CloseSearchMenu={CloseSearchMenu}
+      />
     </header>
   );
 }
