@@ -23,10 +23,10 @@ function Masterpiece() {
   }, [isInview]);
 
   return (
-    <section className="h-[100vh] max-lg:h-[70vh] max-md:h-[120vh] w-full bg-black text-white py-32">
+    <section className="h-[100vh] max-lg:h-[70vh] max-md:h-[120vh] w-full bg-black text-white py-32 overflow-hidden">
       <div className="mx-auto max-lg:max-w-5xl max-w-8xl flex justify-between h-full px-10">
         <div className="flex flex-col justify-between h-full items-start w-full">
-          <div ref={ref} className="w-fit">
+          <div ref={ref} className="">
             <motion.h3
               initial={{ opacity: 0 }}
               animate={textcontrols}
@@ -36,7 +36,7 @@ function Masterpiece() {
               Inspired by the sense of freedom.
             </motion.h3>
 
-            <div className="relative h-[150px] w-[300px] overflow-hidden">
+            <div className="relative h-[150px] w-[500px] max-lg:w-[300px] overflow-hidden">
               <motion.h1
                 initial={{ top: "120px" }}
                 animate={positioncontrols}

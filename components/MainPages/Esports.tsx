@@ -25,7 +25,7 @@ function MainPage() {
   }, [isInview]);
 
   return (
-    <main className="w-full h-full relative" id="top">
+    <main className="w-full h-full relative overflow-hidden" id="top">
       <video
         loop
         autoPlay

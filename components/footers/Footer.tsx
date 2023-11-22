@@ -8,7 +8,7 @@ function Footer() {
       <div className="border-[var(--wb-grey-50)] border-t-[1px] max-w-7xl mx-auto py-16 px-10">
         <div className="text-[var(--wb-grey-45)] text-sm flex items-center justify-between max-lg:flex-col max-md:gap-5">
           <ul className="footerlinks flex gap-5 max-md:flex-col max-md:items-center">
-            <div className="flex gap-5">
+            <div className="flex flex-wrap justify-center gap-5">
               <li>Provider</li>
               <li>Legal Notice</li>
               <li>Cookies</li>
