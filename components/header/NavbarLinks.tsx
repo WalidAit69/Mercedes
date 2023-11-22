@@ -28,6 +28,7 @@ function NavbarLinks({
     if (showSearchMenu) {
       setMenuType("");
       setShowMenu(false);
+      setHoveredLink(0);
     }
   }, [showSearchMenu]);
 
