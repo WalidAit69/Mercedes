@@ -38,7 +38,7 @@ function Navbar() {
       className="flex flex-col z-50 fixed w-full top-0 left-0"
     >
       <nav className="flex bg-black text-[var(--wb-grey-45)] justify-between items-center px-14 text-xs h-16 relative z-30">
-        <div className="">
+        <div className="max-lg:hidden">
           <motion.ul
             className="flex"
             initial={{ y: -40, opacity: 0 }}
@@ -70,7 +70,7 @@ function Navbar() {
             </button>
             <button
               onClick={() => setshowLoginMenu(!showLoginMenu)}
-              className="flex items-center gap-1 hover:text-white transition-colors navlinks_transition"
+              className="flex items-center gap-1 hover:text-white transition-colors navlinks_transition max-lg:hidden"
             >
               Login{" "}
               {!showLoginMenu ? (

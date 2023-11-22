@@ -82,7 +82,7 @@ function NavbarLinks({
       initial={{ height: 0 }}
       animate={heightcontrols}
       transition={{ duration: 0.5, delay: 0.2 }}
-      className="bg-black bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-80 text-white justify-center h-16 top-[64px] w-full z-10"
+      className="bg-black bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-80 text-white justify-center h-16 top-[64px] w-full z-10 max-lg:hidden"
     >
       {showSearchMenu && <SearchMenu />}
       <ul

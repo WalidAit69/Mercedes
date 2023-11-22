@@ -97,7 +97,7 @@ function Vehicles({
           </ul>
         </motion.div>
 
-        <div className="grid grid-cols-2 gap-24 ml-56">
+        <div className="grid grid-cols-2 gap-24 ml-56 max-xl:ml-32">
           {Cards.map((card, index) => (
             <div
               key={card.title}
@@ -110,8 +110,16 @@ function Vehicles({
                 title={card.title}
                 categorie={card.categorie}
                 image={card.image}
-                width={index === 0 ? "600px" : "270px"}
-                height={index === 0 ? "350px" : "130px"}
+                width={
+                  index === 0
+                    ? "max-2xl:w-[500px] max-xl:w-[400px] w-[600px]"
+                    : "max-2xl:w-[250px] max-xl:w-[200px] w-[270px]"
+                }
+                height={
+                  index === 0
+                    ? "max-2xl:h-[300px] h-[350px]"
+                    : "max-2xl:h-[100px] max-xl:h-[90px] h-[130px]"
+                }
               />
             </div>
           ))}

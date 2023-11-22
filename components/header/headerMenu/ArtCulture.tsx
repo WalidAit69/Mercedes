@@ -50,6 +50,10 @@ function ArtCulture({
     setHoveredLink(0);
     setMenuType("");
   }
+
+  const height = "max-2xl:h-[120px] max-xl:h-[100px] h-[130px]";
+  const width = "max-2xl:w-[260px] max-xl:w-[240px] w-[270px]";
+
   return (
     <>
       <div className="flex w-full flex-col items-center justify-center mt-10 relative">
@@ -88,8 +92,8 @@ function ArtCulture({
               title={card.title}
               categorie={card.categorie}
               image={card.image}
-              width="270px"
-              height="130px"
+              width={width}
+              height={height}
             />
           ))}
         </div>

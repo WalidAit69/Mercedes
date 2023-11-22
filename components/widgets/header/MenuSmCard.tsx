@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 interface MenuSmCard {
   categorie: string;
@@ -11,21 +12,20 @@ interface MenuSmCard {
 function MenuSmCard({ title, categorie, image, width, height }: MenuSmCard) {
   return (
     <div
-      className="relative menuhover imghover cursor-pointer"
-      style={{ height: `${height}`, width: `${width}` }}
+      className={cn(
+        "relative menuhover imghover cursor-pointer",
+        height,
+        width
+      )}
     >
-      <div
-        className="relative overflow-hidden"
-        style={{ height: `${height}`, width: `${width}` }}
-      >
+      <div className={cn("relative overflow-hidden", height, width)}>
         <motion.img
           initial={{ height: 0 }}
-          animate={{ height: `${height}` }}
+          animate={{ height: `100%` }}
           transition={{ duration: 0.5, delay: 0.5, ease: [0.8, 0, 0, 0.8] }}
           src={image}
           alt=""
-          className="object-cover navlinks_transition"
-          style={{ height: `${height}`, width: `${width}` }}
+          className={cn("object-cover navlinks_transition", height, width)}
         />
       </div>
       <motion.div

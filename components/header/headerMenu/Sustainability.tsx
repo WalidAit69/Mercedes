@@ -30,9 +30,13 @@ function Sustainability({
     setHoveredLink(0);
     setMenuType("");
   }
+
+  const height = "max-2xl:h-[300px] max-xl:h-[200px] h-[400px]";
+  const width = "max-2xl:w-[500px] max-xl:w-[400px] w-[600px]";
+
   return (
     <>
-      <div className="flex w-full flex-col items-center justify-center mt-10 relative">
+      <div className="flex w-full flex-col items-center justify-center mt-10 relativ">
         <motion.ul
           initial={{ y: 40, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -57,16 +61,16 @@ function Sustainability({
         </motion.div>
       </div>
 
-      <div className="flex flex-col items-center justify-center h-fit w-full mt-10">
-        <div className="grid grid-cols-2 gap-24 h-[400px]">
+      <div className="flex flex-col items-center justify-center h-fit w-full max-2xl:mt-20 mt-10">
+        <div className="grid grid-cols-2 gap-24 h-[300px]">
           {Cards.map((card) => (
             <MenuSmCard
               key={card.title}
               title={card.title}
               categorie={card.categorie}
               image={card.image}
-              width="600px"
-              height="400px"
+              width={width}
+              height={height}
             />
           ))}
         </div>
