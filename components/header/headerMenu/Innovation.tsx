@@ -36,7 +36,7 @@ function Innovation({
   }
   return (
     <>
-      <div className="absolute left-[32%] top-[15%] flex">
+      <div className="flex w-full flex-col items-center justify-center mt-10 relative">
         <motion.ul
           initial={{ y: 40, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -53,17 +53,18 @@ function Innovation({
             Milestones
           </li>
         </motion.ul>
+        <motion.div
+          initial={{ y: 40, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.5, ease: [0.8, 0, 0, 0.8] }}
+          className="absolute right-5 cursor-pointer"
+          onClick={CloseMenu}
+        >
+          <X />
+        </motion.div>
       </div>
-      <motion.div
-        initial={{ y: 40, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.5, ease: [0.8, 0, 0, 0.8] }}
-        className="absolute right-5 top-[15%]"
-        onClick={CloseMenu}
-      >
-        <X />
-      </motion.div>
-      <div className="absolute top-[25%] left-[5%]">
+
+      <div className="flex flex-col items-center justify-center h-fit w-full mt-14 ml-40">
         <div className="grid grid-cols-2 gap-24">
           {Cards.map((card, index) => (
             <div

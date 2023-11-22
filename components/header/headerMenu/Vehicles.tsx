@@ -36,7 +36,7 @@ function Vehicles({
   }
   return (
     <>
-      <div className="absolute left-[20%] top-[15%] flex">
+      <div className="flex w-full flex-col items-center justify-center mt-10 relative">
         <motion.ul
           initial={{ y: 40, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -59,24 +59,50 @@ function Vehicles({
             Mercedes-Benz Classic
           </li>
         </motion.ul>
+        <motion.div
+          initial={{ y: 40, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.5, ease: [0.8, 0, 0, 0.8] }}
+          className="absolute right-5 top-[15%] cursor-pointer"
+          onClick={CloseMenu}
+        >
+          <X />
+        </motion.div>
       </div>
-      <motion.div
-        initial={{ y: 40, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.5, ease: [0.8, 0, 0, 0.8] }}
-        className="absolute right-5 top-[15%]"
-        onClick={CloseMenu}
-      >
-        <X />
-      </motion.div>
-      <div className="absolute top-[30%] left-[30%]">
-        <div className="grid grid-cols-2 gap-24">
+
+      <div className="flex items-center justify-center h-fit w-full mt-20 ml-20">
+        <motion.div
+          initial={{ y: 40, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.5, ease: [0.8, 0, 0, 0.8] }}
+          className="flex flex-col gap-4 mb-20"
+        >
+          <h1 className="text-white text-xl">Purchase</h1>
+          <ul className="flex flex-col gap-2 w-[130px]">
+            <li className="text-[var(--wb-grey-50)] hover:text-white transition-colors navlinks_transition">
+              New cars
+            </li>
+            <li className="text-[var(--wb-grey-50)] hover:text-white transition-colors navlinks_transition">
+              Configurator
+            </li>
+            <li className="text-[var(--wb-grey-50)] hover:text-white transition-colors navlinks_transition">
+              Book a test drive
+            </li>
+            <li className="text-[var(--wb-grey-50)] hover:text-white transition-colors navlinks_transition">
+              Find a retailer
+            </li>
+            <li className="text-[var(--wb-grey-50)] hover:text-white transition-colors navlinks_transition">
+              Classic Store
+            </li>
+          </ul>
+        </motion.div>
+
+        <div className="grid grid-cols-2 gap-24 ml-56">
           {Cards.map((card, index) => (
             <div
               key={card.title}
               style={{
                 gridRow: index === 0 ? "span 2" : "auto",
-                marginLeft: index !== 0 ? "100px" : "0",
               }}
             >
               <MenuSmCard
@@ -91,32 +117,6 @@ function Vehicles({
           ))}
         </div>
       </div>
-
-      <motion.div
-        initial={{ y: 40, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.5, ease: [0.8, 0, 0, 0.8] }}
-        className="flex flex-col gap-4 absolute left-[5%] top-[30%]"
-      >
-        <h1 className="text-white text-xl">Purchase</h1>
-        <ul className="flex flex-col gap-2">
-          <li className="text-[var(--wb-grey-50)] hover:text-white transition-colors navlinks_transition">
-            New cars
-          </li>
-          <li className="text-[var(--wb-grey-50)] hover:text-white transition-colors navlinks_transition">
-            Configurator
-          </li>
-          <li className="text-[var(--wb-grey-50)] hover:text-white transition-colors navlinks_transition">
-            Book a test drive
-          </li>
-          <li className="text-[var(--wb-grey-50)] hover:text-white transition-colors navlinks_transition">
-            Find a retailer
-          </li>
-          <li className="text-[var(--wb-grey-50)] hover:text-white transition-colors navlinks_transition">
-            Classic Store
-          </li>
-        </ul>
-      </motion.div>
     </>
   );
 }

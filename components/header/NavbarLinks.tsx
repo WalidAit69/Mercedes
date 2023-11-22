@@ -24,6 +24,13 @@ function NavbarLinks({
 
   const [MenuType, setMenuType] = useState("");
 
+  useEffect(() => {
+    if (showSearchMenu) {
+      setMenuType("");
+      setShowMenu(false);
+    }
+  }, [showSearchMenu]);
+
   const handleLinkHover = (e: any, index: number) => {
     if (!ShowMenu) {
       setHoveredLink(index);
@@ -74,7 +81,7 @@ function NavbarLinks({
       initial={{ height: 0 }}
       animate={heightcontrols}
       transition={{ duration: 0.5, delay: 0.2 }}
-      className="bg-black bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-80 text-white flex justify-center h-16 top-[64px] w-full z-10"
+      className="bg-black bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-80 text-white justify-center h-16 top-[64px] w-full z-10"
     >
       {showSearchMenu && <SearchMenu />}
       <ul
@@ -208,55 +215,54 @@ function NavbarLinks({
         >
           Vehicles
         </motion.li>
-
-        {MenuType === "Art&Culture" && (
-          <ArtCulture
-            setShowMenu={setShowMenu}
-            setMenuType={setMenuType}
-            setHoveredLink={setHoveredLink}
-          />
-        )}
-
-        {MenuType === "Sustainability" && (
-          <Sustainability
-            setShowMenu={setShowMenu}
-            setMenuType={setMenuType}
-            setHoveredLink={setHoveredLink}
-          />
-        )}
-
-        {MenuType === "Design" && (
-          <Design
-            setShowMenu={setShowMenu}
-            setMenuType={setMenuType}
-            setHoveredLink={setHoveredLink}
-          />
-        )}
-
-        {MenuType === "Innovation" && (
-          <Innovation
-            setShowMenu={setShowMenu}
-            setMenuType={setMenuType}
-            setHoveredLink={setHoveredLink}
-          />
-        )}
-
-        {MenuType === "Exclusive" && (
-          <Exclusive
-            setShowMenu={setShowMenu}
-            setMenuType={setMenuType}
-            setHoveredLink={setHoveredLink}
-          />
-        )}
-
-        {MenuType === "Vehicles" && (
-          <Vehicles
-            setShowMenu={setShowMenu}
-            setMenuType={setMenuType}
-            setHoveredLink={setHoveredLink}
-          />
-        )}
       </ul>
+      {MenuType === "Art&Culture" && (
+        <ArtCulture
+          setShowMenu={setShowMenu}
+          setMenuType={setMenuType}
+          setHoveredLink={setHoveredLink}
+        />
+      )}
+
+      {MenuType === "Sustainability" && (
+        <Sustainability
+          setShowMenu={setShowMenu}
+          setMenuType={setMenuType}
+          setHoveredLink={setHoveredLink}
+        />
+      )}
+
+      {MenuType === "Design" && (
+        <Design
+          setShowMenu={setShowMenu}
+          setMenuType={setMenuType}
+          setHoveredLink={setHoveredLink}
+        />
+      )}
+
+      {MenuType === "Innovation" && (
+        <Innovation
+          setShowMenu={setShowMenu}
+          setMenuType={setMenuType}
+          setHoveredLink={setHoveredLink}
+        />
+      )}
+
+      {MenuType === "Exclusive" && (
+        <Exclusive
+          setShowMenu={setShowMenu}
+          setMenuType={setMenuType}
+          setHoveredLink={setHoveredLink}
+        />
+      )}
+
+      {MenuType === "Vehicles" && (
+        <Vehicles
+          setShowMenu={setShowMenu}
+          setMenuType={setMenuType}
+          setHoveredLink={setHoveredLink}
+        />
+      )}
     </motion.nav>
   );
 }

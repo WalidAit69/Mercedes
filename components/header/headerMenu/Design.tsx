@@ -35,24 +35,24 @@ function Design({
     setMenuType("");
   }
   return (
-    <>
-      <motion.div
-        initial={{ y: 40, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.5, ease: [0.8, 0, 0, 0.8] }}
-        className="absolute right-5 top-[15%]"
-        onClick={CloseMenu}
-      >
-        <X />
-      </motion.div>
-      <div className="absolute top-[25%] left-[5%]">
+    <div className=" w-full h-full">
+      <div className="grid place-items-center h-fit w-full mt-28 ml-40">
+        <motion.div
+          initial={{ y: 40, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.5, ease: [0.8, 0, 0, 0.8] }}
+          className="absolute right-5 top-[15%] cursor-pointer"
+          onClick={CloseMenu}
+        >
+          <X />
+        </motion.div>
         <div className="grid grid-cols-2 gap-24">
           {Cards.map((card, index) => (
             <div
               key={card.title}
               style={{
                 gridRow: index === 0 ? "span 2" : "auto",
-                marginLeft: index !== 0 ? "100px" : "0",
+                marginLeft: index !== 0 ? "70px" : "0",
               }}
             >
               <MenuSmCard
@@ -67,7 +67,7 @@ function Design({
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

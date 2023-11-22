@@ -11,7 +11,7 @@ interface MenuSmCard {
 function MenuSmCard({ title, categorie, image, width, height }: MenuSmCard) {
   return (
     <div
-      className="relative menuhover imghover"
+      className="relative menuhover imghover cursor-pointer"
       style={{ height: `${height}`, width: `${width}` }}
     >
       <div
