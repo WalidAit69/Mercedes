@@ -10,15 +10,18 @@ import Design from "./headerMenu/Design";
 import Innovation from "./headerMenu/Innovation";
 import Exclusive from "./headerMenu/Exclusive";
 import Vehicles from "./headerMenu/Vehicles";
+import MobileMenu from "./MobileMenu";
 
 function NavbarLinks({
   showLinks,
   showSearchMenu,
   CloseSearchMenu,
+  showMobileMenu,
 }: {
   showLinks: boolean;
   showSearchMenu: boolean;
   CloseSearchMenu: boolean;
+  showMobileMenu: boolean;
 }) {
   const [hoveredLink, setHoveredLink] = useState(0);
 
@@ -59,7 +62,9 @@ function NavbarLinks({
     heightcontrols.start({ height: "64px" });
     positioncontrols.start({ y: 0, opacity: 1 });
 
-    if (CloseSearchMenu) {
+    if (showMobileMenu) {
+      heightcontrols.start({ height: "91vh" });
+    } else if (CloseSearchMenu || !showMobileMenu) {
       heightcontrols.start({ height: 0 });
     } else if (ShowMenu) {
       heightcontrols.start({ height: "91vh" });
@@ -73,7 +78,14 @@ function NavbarLinks({
       heightcontrols.start({ height: 0 });
       positioncontrols.start({ y: -40, opacity: 1 });
     }
-  }, [showLinks, scrollDirection, showSearchMenu, ShowMenu, CloseSearchMenu]);
+  }, [
+    showLinks,
+    scrollDirection,
+    showSearchMenu,
+    ShowMenu,
+    CloseSearchMenu,
+    showMobileMenu,
+  ]);
 
   function GetMenuType(e: any, index: number) {
     setShowMenu(true);
@@ -89,6 +101,8 @@ function NavbarLinks({
       className="bg-black bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-80 text-white justify-center h-16 top-[64px] w-full z-10 max-lg:hidden"
     >
       {showSearchMenu && <SearchMenu />}
+      {showMobileMenu && <MobileMenu />}
+
       <ul
         className="flex h-fit w-full justify-center pb-4 mt-4 space-x-16 max-lg:hidden"
         style={{

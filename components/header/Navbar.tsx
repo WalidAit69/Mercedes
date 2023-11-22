@@ -13,6 +13,7 @@ function Navbar() {
   const [showLinks, setshowLinks] = useState(false);
   const [showLoginMenu, setshowLoginMenu] = useState(false);
   const [showSearchMenu, setshowSearchMenu] = useState(false);
+  const [showMobileMenu, setshowMobileMenu] = useState(false);
   const [CloseSearchMenu, setCloseSearchMenu] = useState(false);
 
   const positioncontrols = useAnimation();
@@ -32,24 +33,37 @@ function Navbar() {
     }
   }, [positioncontrols, showLinks, scrollDirection, showSearchMenu]);
 
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-
-  const handleResize = () => {
-    setScreenWidth(window.innerWidth);
-  };
+  const [screenWidth, setScreenWidth] = useState(0);
 
   useEffect(() => {
-    window.addEventListener("resize", handleResize);
+    // Check if window is defined to avoid errors during server-side rendering
+    if (typeof window !== "undefined") {
+      // Set initial screen width
+      setScreenWidth(window.innerWidth);
 
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+      // Add event listener for window resize
+      const handleResize = () => {
+        setScreenWidth(window.innerWidth);
+      };
+
+      window.addEventListener("resize", handleResize);
+
+      // Clean up the event listener on component unmount
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }
   }, []);
 
   function OpenSearch() {
     setshowSearchMenu(true);
     setCloseSearchMenu(false);
   }
+
+  function ToggleMenu() {
+    setshowMobileMenu(!showMobileMenu);
+  }
+ 
 
   function CloseSearch() {
     setshowSearchMenu(false);
@@ -81,12 +95,12 @@ function Navbar() {
           </motion.ul>
         </div>
 
-        <div>
+        <div className="flex  max-lg:w-full ">
           <motion.div
             initial={{ y: -40, opacity: 0 }}
             animate={positioncontrols}
             transition={{ duration: 0.5, ease: [0.8, 0, 0, 0.8] }}
-            className="flex gap-10"
+            className="flex max-lg:items-center max-lg:justify-between gap-10 max-lg:w-full"
           >
             <button
               onClick={OpenSearch}
@@ -94,6 +108,27 @@ function Navbar() {
             >
               Search <Search width={14} />
             </button>
+
+            <div className="relative h-[15px] w-[50px] overflow-hidden">
+              <motion.div
+                animate={{ top: showMobileMenu ? "-100%" : "0" }}
+                className="h-full w-full relative"
+              >
+                <button
+                  onClick={ToggleMenu}
+                  className="flex absolute h-full items-center gap-1 hover:text-white transition-colors navlinks_transition lg:hidden mr-5"
+                >
+                  Menu
+                </button>
+                <button
+                  onClick={ToggleMenu}
+                  className="flex absolute top-full h-full items-center gap-1 hover:text-white transition-colors navlinks_transition lg:hidden mr-5"
+                >
+                  Close
+                </button>
+              </motion.div>
+            </div>
+
             <button
               onClick={() => setshowLoginMenu(!showLoginMenu)}
               className="flex items-center gap-1 hover:text-white transition-colors navlinks_transition max-lg:hidden"
@@ -133,6 +168,7 @@ function Navbar() {
         showLinks={showLinks}
         showSearchMenu={showSearchMenu}
         CloseSearchMenu={CloseSearchMenu}
+        showMobileMenu={showMobileMenu}
       />
     </header>
   );
