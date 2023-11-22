@@ -38,30 +38,17 @@ function MainPage() {
       <div className="bg-gradient-to-t from-black to-transparent h-full w-full absolute inset-0"></div>
 
       <div
-        className="absolute top-[50%] left-32 max-lg:left-[50%] max-lg:-translate-x-1/2 text-white max-lg:text-center flex flex-col"
+        className="absolute top-[50%] left-32 max-lg:left-[50%] max-lg:-translate-x-1/2 text-white max-lg:text-center flex flex-col
+        max-[400px]:top-[70%] max-[400px]:w-[300px]"
         ref={ref}
       >
-        <div className="relative h-[40px] overflow-hidden w-full max-lg:w-[450px]">
+        <div className="text-4xl max-sm:text-3xl max-[400px]:text-2xl relative h-[40px] overflow-hidden w-full max-lg:w-[450px] max-sm:w-[300px]">
           <motion.h1
             animate={h1controls}
             transition={{ duration: 1, delay: 0.6, ease: [0.8, 0, 0, 0.8] }}
-            className="text-4xl font-medium absolute bottom-[-35px] left-0"
+            className=" font-medium"
           >
-            Mercedes-Benz
-          </motion.h1>
-          <motion.h1
-            animate={h1controls}
-            transition={{ duration: 1, delay: 0.7, ease: [0.8, 0, 0, 0.8] }}
-            className="text-4xl font-medium absolute bottom-[-35px] left-[270px]"
-          >
-            X
-          </motion.h1>
-          <motion.h1
-            animate={h1controls}
-            transition={{ duration: 1, delay: 0.8, ease: [0.8, 0, 0, 0.8] }}
-            className="text-4xl font-medium absolute bottom-[-35px] left-[300px]"
-          >
-            Esports.
+            Mercedes-Benz X Esports
           </motion.h1>
         </div>
 
@@ -69,7 +56,7 @@ function MainPage() {
           initial={{ opacity: 0 }}
           animate={controls}
           transition={{ duration: 1, delay: 2, ease: [0.8, 0, 0, 0.8] }}
-          className="my-4 font-medium text-lg"
+          className="my-4 font-medium text-lg max-sm:text-sm max-[400px]:text-xs max-sm:max-w-[400px] max-[400px]:w-[300px] "
         >
           Join the hunt for glory – an interactive League of Legends Esports{" "}
           <br /> adventure.
@@ -81,7 +68,7 @@ function MainPage() {
           transition={{ duration: 1, delay: 2, ease: [0.8, 0, 0, 0.8] }}
           className="flex max-lg:items-center max-lg:justify-center"
         >
-          <button className="text-black bg-white w-[150px] rounded-full flex items-center gap-2 py-[3px] px-3 font-medium text-[14px] hover:text-white hover:bg-[var(--theme-primary)] transition-colors navlinks_transition">
+          <button className="text-black bg-white w-[150px] max-[400px]:w-[130px] max-sm:text-sm max-[400px]:text-xs  rounded-full flex items-center gap-2 py-[3px] px-3 font-medium text-[14px] hover:text-white hover:bg-[var(--theme-primary)] transition-colors navlinks_transition">
             Discover more <ChevronRight width={15} />
           </button>
         </motion.div>

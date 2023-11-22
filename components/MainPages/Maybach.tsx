@@ -39,14 +39,15 @@ function MainPageMaybach() {
       <div className="bg-gradient-to-t from-black to-transparent h-full w-full absolute inset-0"></div>
 
       <div
-        className="absolute top-[40%] left-32 max-lg:left-[50%] max-lg:-translate-x-1/2 text-white max-lg:text-center flex flex-col"
+        className="absolute top-[40%] left-32 max-lg:left-[50%] max-lg:-translate-x-1/2 text-white max-lg:text-center flex flex-col
+        max-[400px]:top-[60%]"
         ref={ref}
       >
         <div className="relative h-[40px] overflow-hidden w-[340px] max-lg:flex max-lg:items-center max-lg:justify-center">
           <motion.h1
             animate={h1controls}
             transition={{ duration: 1, delay: 0.8, ease: [0.8, 0, 0, 0.8] }}
-            className="text-4xl font-medium absolute bottom-[-35px]"
+            className="text-4xl max-sm:text-3xl max-[400px]:text-2xl font-medium absolute bottom-[-35px]"
           >
             Welcome to Beyond
           </motion.h1>
@@ -56,7 +57,7 @@ function MainPageMaybach() {
           initial={{ opacity: 0 }}
           animate={controls}
           transition={{ duration: 1, delay: 2, ease: [0.8, 0, 0, 0.8] }}
-          className="my-4 font-medium text-lg"
+          className="my-4 font-medium text-lg max-sm:text-sm max-[400px]:text-xs"
         >
           Welcome to Mercedes-Maybach.
         </motion.h3>
@@ -67,7 +68,7 @@ function MainPageMaybach() {
           transition={{ duration: 1, delay: 2, ease: [0.8, 0, 0, 0.8] }}
           className="flex max-lg:items-center max-lg:justify-center"
         >
-          <button className="text-black bg-white w-[150px] rounded-full flex items-center gap-2 py-[3px] px-3 font-medium text-[14px] hover:text-white hover:bg-[var(--theme-primary)] transition-colors navlinks_transition">
+          <button className="text-black bg-white w-[150px] max-[400px]:w-[130px] max-sm:text-sm max-[400px]:text-xs  rounded-full flex items-center gap-2 py-[3px] px-3 font-medium text-[14px] hover:text-white hover:bg-[var(--theme-primary)] transition-colors navlinks_transition">
             Discover more <ChevronRight width={15} />
           </button>
         </motion.div>

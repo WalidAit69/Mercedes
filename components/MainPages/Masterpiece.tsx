@@ -26,17 +26,17 @@ function Masterpiece() {
     <section className="h-[100vh] max-lg:h-[70vh] max-md:h-[120vh] w-full bg-black text-white py-32">
       <div className="mx-auto max-lg:max-w-5xl max-w-8xl flex justify-between h-full px-10">
         <div className="flex flex-col justify-between h-full items-start w-full">
-          <div ref={ref}>
+          <div ref={ref} className="w-fit">
             <motion.h3
               initial={{ opacity: 0 }}
               animate={textcontrols}
               transition={{ duration: 1.5, delay: 0.9, ease: [0.8, 0, 0, 0.8] }}
-              className="max-lg:text-sm"
+              className="max-lg:text-sm w-fit"
             >
               Inspired by the sense of freedom.
             </motion.h3>
 
-            <div className="relative h-[150px] w-[450px] overflow-hidden">
+            <div className="relative h-[150px] w-[300px] overflow-hidden">
               <motion.h1
                 initial={{ top: "120px" }}
                 animate={positioncontrols}

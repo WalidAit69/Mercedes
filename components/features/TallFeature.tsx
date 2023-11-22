@@ -25,7 +25,7 @@ function TallFeature({ title, description, image, alt, titlebig }: Feature) {
     if (isInview) {
       positioncontrols.start({ top: 0 });
       textcontrols.start({ opacity: 1 });
-      heightcontrols.start({ height: "600px" });
+      heightcontrols.start({ height: "100%" });
     }
   }, [isInview]);
 
@@ -40,7 +40,7 @@ function TallFeature({ title, description, image, alt, titlebig }: Feature) {
   };
 
   return (
-    <div className="relative w-[400px] flex flex-col cursor-pointer overflow-hidden imghover">
+    <div className="relative w-[400px] max-sm:w-[300px] flex flex-col cursor-pointer overflow-hidden imghover">
       <div
         className={`absolute top-0 bg-white w-full ${titlebig} h-24 flex flex-col gap-5 z-10`}
       >
@@ -65,7 +65,7 @@ function TallFeature({ title, description, image, alt, titlebig }: Feature) {
       </div>
 
       <div
-        className="overflow-hidden"
+        className="overflow-hidden h-[600px] max-sm:h-[380px]"
         onMouseEnter={imageEnter}
         onMouseLeave={imageLeave}
         ref={ref}
@@ -76,7 +76,7 @@ function TallFeature({ title, description, image, alt, titlebig }: Feature) {
           initial={{ height: 0 }}
           animate={heightcontrols}
           transition={{ duration: 0.5, delay: 0.5, ease: [0.8, 0, 0, 0.8] }}
-          className="w-full h-[600px] object-cover navlinks_transition"
+          className="w-full object-cover navlinks_transition"
           src={image}
           alt={alt}
         />

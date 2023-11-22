@@ -28,16 +28,16 @@ function FooterMenu() {
   return (
     <section className="relative bg-black text-[var(--wb-grey-50)] h-[100vh]">
       <div
-        className="absolute top-[40%] left-[10%] flex gap-20 items-center footerlinks transition-colors"
+        className="absolute top-[40%] left-[10%] flex gap-20 max-md:gap-0 items-center footerlinks transition-colors"
         ref={ref}
       >
-        <div className="flex flex-col gap-3">
-          <div className="relative h-[60px] w-[240px] overflow-hidden">
+        <div className="flex flex-col gap-3 max-sm:gap-0 text-5xl max-md:text-3xl max-[400px]:w-[150px] w-[250px]">
+          <div className="relative h-[60px] max-[400px]:w-[150px] w-[250px] overflow-hidden">
             <motion.h1
               initial={{ top: "60px" }}
               animate={positioncontrols}
               transition={{ duration: 0.5, delay: 0.5, ease: [0.8, 0, 0, 0.8] }}
-              className="text-5xl text-white cursor-pointer hover:text-white top-[60px] absolute"
+              className=" text-white cursor-pointer hover:text-white top-[60px] absolute"
               onClick={() => setMenuType(1)}
               style={{ color: MenuType === 1 ? "white" : "gray" }}
             >
@@ -45,24 +45,24 @@ function FooterMenu() {
             </motion.h1>
           </div>
 
-          <div className="relative h-[60px] w-[240px] overflow-hidden">
+          <div className="relative h-[60px] max-[400px]:w-[150px] w-[250px] overflow-hidden">
             <motion.h1
               initial={{ top: "60px" }}
               animate={positioncontrols}
               transition={{ duration: 0.5, delay: 0.5, ease: [0.8, 0, 0, 0.8] }}
-              className="text-5xl text-white cursor-pointer hover:text-white top-[60px] absolute"
+              className=" text-white cursor-pointer hover:text-white top-[60px] absolute"
               onClick={() => setMenuType(2)}
               style={{ color: MenuType === 2 ? "white" : "gray" }}
             >
               Finance
             </motion.h1>
           </div>
-          <div className="relative h-[60px] w-[240px] overflow-hidden">
+          <div className="relative h-[60px] max-[400px]:w-[150px] w-[250px] overflow-hidden">
             <motion.h1
               initial={{ top: "60px" }}
               animate={positioncontrols}
               transition={{ duration: 0.5, delay: 0.5, ease: [0.8, 0, 0, 0.8] }}
-              className="text-5xl text-white cursor-pointer hover:text-white top-[60px] absolute"
+              className=" text-white cursor-pointer hover:text-white top-[60px] absolute"
               onClick={() => setMenuType(3)}
               style={{ color: MenuType === 3 ? "white" : "gray" }}
             >
@@ -77,7 +77,7 @@ function FooterMenu() {
               initial={{ x: -30, opacity: 0 }}
               animate={textcontrols}
               transition={{ duration: 0.5, delay: 0.5, ease: [0.8, 0, 0, 0.8] }}
-              className="flex flex-col gap-3"
+              className="flex flex-col gap-3 max-md:text-sm"
             >
               <li>Vehicles</li>
               <li>Accessories</li>

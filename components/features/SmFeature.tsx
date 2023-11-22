@@ -25,7 +25,7 @@ function SmFeature({ title, description, image, alt }: Feature) {
     if (isInview) {
       positioncontrols.start({ top: 0 });
       textcontrols.start({ opacity: 1 });
-      heightcontrols.start({ height: "280px" });
+      heightcontrols.start({ height: "100%" });
     }
   }, [isInview]);
 
@@ -40,7 +40,7 @@ function SmFeature({ title, description, image, alt }: Feature) {
   };
 
   return (
-    <div className="relative flex flex-col w-[500px] cursor-pointer imghover overflow-hidden">
+    <div className="relative flex flex-col w-[500px] max-sm:w-[300px] cursor-pointer imghover overflow-hidden">
       <div className="bg-white w-full h-24 flex flex-col gap-5">
         <motion.h3
           initial={{ opacity: 0 }}
@@ -62,7 +62,7 @@ function SmFeature({ title, description, image, alt }: Feature) {
       </div>
 
       <div
-        className="relative overflow-hidden z-20"
+        className="relative overflow-hidden z-20 h-[280px]"
         ref={ref}
         onMouseEnter={imageEnter}
         onMouseLeave={imageLeave}
