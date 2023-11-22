@@ -4,8 +4,8 @@ import SmFeature from "../features/SmFeature";
 
 function Features() {
   return (
-    <section className="my-44 flex justify-center">
-      <div className="grid gap-y-40 grid-cols-2">
+    <section className="my-44 flex justify-center xl:max-w-6xl max-w-5xl mx-auto">
+      <div className="xl:grid xl:gap-y-40 xl:grid-cols-2 flex gap-16 flex-col w-full px-10">
         <div>
           <TallFeature
             title="Responsibility"
@@ -14,7 +14,7 @@ function Features() {
             alt="A woman in a wheelchair poses in front a Mercedes-Benz"
           />
         </div>
-        <div className="mt-80">
+        <div className="xl:mt-80 self-end">
           <SmFeature
             title="Future Mobility"
             description="Neon Dreams."
@@ -31,7 +31,7 @@ function Features() {
             titlebig="h-32"
           />
         </div>
-        <div className="mt-40">
+        <div className="xl:mt-40 self-end">
           <SmFeature
             title="Milestones"
             description="Defining Class since 1886."

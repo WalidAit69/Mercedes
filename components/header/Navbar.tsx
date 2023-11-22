@@ -35,7 +35,7 @@ function Navbar() {
     <header
       onMouseEnter={() => setshowLinks(true)}
       onMouseLeave={() => setshowLinks(false)}
-      className="flex flex-col z-50 fixed w-full top-0 left-0"
+      className="flex flex-col z-50 fixed w-[100vw] top-0 left-0"
     >
       <nav className="flex bg-black text-[var(--wb-grey-45)] justify-between items-center px-14 text-xs h-16 relative z-30">
         <div className="max-lg:hidden">

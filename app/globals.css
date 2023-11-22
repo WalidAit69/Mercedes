@@ -12,6 +12,8 @@
 html {
   scroll-snap-type: y none;
   scroll-behavior: smooth;
+  height: 100%;
+  width: 100%;
 }
 
 main {

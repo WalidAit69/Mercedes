@@ -37,8 +37,11 @@ function MainPage() {
 
       <div className="bg-gradient-to-t from-black to-transparent h-full w-full absolute inset-0"></div>
 
-      <div className="absolute top-[50%] left-32 text-white" ref={ref}>
-        <div className="relative h-[40px] overflow-hidden">
+      <div
+        className="absolute top-[50%] left-32 max-lg:left-[50%] max-lg:-translate-x-1/2 text-white max-lg:text-center flex flex-col"
+        ref={ref}
+      >
+        <div className="relative h-[40px] overflow-hidden w-full max-lg:w-[450px]">
           <motion.h1
             animate={h1controls}
             transition={{ duration: 1, delay: 0.6, ease: [0.8, 0, 0, 0.8] }}
@@ -72,14 +75,16 @@ function MainPage() {
           <br /> adventure.
         </motion.h3>
 
-        <motion.button
+        <motion.div
           initial={{ opacity: 0 }}
           animate={controls}
           transition={{ duration: 1, delay: 2, ease: [0.8, 0, 0, 0.8] }}
-          className="text-black bg-white rounded-full flex items-center gap-2 py-[3px] px-3 font-medium text-[14px] hover:text-white hover:bg-[var(--theme-primary)] transition-colors navlinks_transition"
+          className="flex max-lg:items-center max-lg:justify-center"
         >
-          Discover more <ChevronRight width={15} />
-        </motion.button>
+          <button className="text-black bg-white w-[150px] rounded-full flex items-center gap-2 py-[3px] px-3 font-medium text-[14px] hover:text-white hover:bg-[var(--theme-primary)] transition-colors navlinks_transition">
+            Discover more <ChevronRight width={15} />
+          </button>
+        </motion.div>
       </div>
 
       <motion.div
