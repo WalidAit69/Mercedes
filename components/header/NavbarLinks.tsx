@@ -64,7 +64,7 @@ function NavbarLinks({
 
     if (showMobileMenu) {
       heightcontrols.start({ height: "91vh" });
-    } else if (CloseSearchMenu || !showMobileMenu) {
+    } else if (CloseSearchMenu) {
       heightcontrols.start({ height: 0 });
     } else if (ShowMenu) {
       heightcontrols.start({ height: "91vh" });
