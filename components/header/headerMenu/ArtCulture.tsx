@@ -47,6 +47,9 @@ function ArtCulture({
 }) {
   function CloseMenu() {
     setShowMenu(false);
+    if (setHoveredLink) {
+      setHoveredLink(0);
+    }
     setMenuType("");
   }
 
@@ -84,7 +87,7 @@ function ArtCulture({
       </div>
 
       <div className="flex flex-col items-center justify-center max-lg:h-full w-full mt-20">
-        <div className="grid grid-cols-3 gap-24 max-lg:grid-cols-1 max-lg:h-full max-xl:pb-24">
+        <div className="grid grid-cols-3 gap-24 max-lg:grid-cols-2 max-sm:grid-cols-1 max-lg:h-full max-xl:pb-24">
           {Cards.map((card) => (
             <MenuSmCard
               key={card.title}

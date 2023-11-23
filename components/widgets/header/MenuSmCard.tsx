@@ -9,6 +9,7 @@ interface MenuSmCard {
   width: string;
   height: string;
 }
+
 function MenuSmCard({ title, categorie, image, width, height }: MenuSmCard) {
   return (
     <div
@@ -28,6 +29,7 @@ function MenuSmCard({ title, categorie, image, width, height }: MenuSmCard) {
           className={cn("object-cover navlinks_transition", height, width)}
         />
       </div>
+
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

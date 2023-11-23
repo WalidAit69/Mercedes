@@ -11,7 +11,7 @@ function Innovation({
 }: {
   setShowMenu: any;
   setMenuType: any;
-  setHoveredLink: any;
+  setHoveredLink?: any;
 }) {
   const Cards = [
     {
@@ -32,17 +32,19 @@ function Innovation({
   ];
   function CloseMenu() {
     setShowMenu(false);
-    setHoveredLink(0);
+    if (setHoveredLink) {
+      setHoveredLink(0);
+    }
     setMenuType("");
   }
   return (
-    <>
+    <div className="max-lg:overflow-y-scroll max-lg:h-[91vh]">
       <div className="flex w-full flex-col items-center justify-center mt-10 relative">
         <motion.ul
           initial={{ y: 40, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.5, ease: [0.8, 0, 0, 0.8] }}
-          className="flex items-center gap-7"
+          className="flex items-center gap-7 max-lg:flex-col"
         >
           <li className="text-[var(--wb-grey-50)] hover:text-white transition-colors navlinks_transition">
             Future Mobility
@@ -58,19 +60,19 @@ function Innovation({
           initial={{ y: 40, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.5, ease: [0.8, 0, 0, 0.8] }}
-          className="absolute right-5 cursor-pointer"
+          className="absolute right-5 cursor-pointer max-lg:top-0"
           onClick={CloseMenu}
         >
           <X />
         </motion.div>
       </div>
 
-      <div className="flex flex-col items-center justify-center h-fit w-full mt-14 ml-40 max-lg:ml-20">
-        <div className="grid grid-cols-2 gap-24">
+      <div className="flex flex-col items-center justify-center h-fit w-full mt-14 ml-40 max-xl:ml-20 max-lg:ml-0">
+        <div className="grid grid-cols-2 max-lg:grid-cols-1 gap-24">
           {Cards.map((card, index) => (
             <div
               key={card.title}
-              className={cn(index !== 0 ? "ml-[70px]" : "ml-0")}
+              className={cn(index !== 0 ? "lg:ml-[70px]" : "ml-0")}
               style={{
                 gridRow: index === 0 ? "span 2" : "auto",
               }}
@@ -82,12 +84,12 @@ function Innovation({
                 image={card.image}
                 width={
                   index === 0
-                    ? "max-2xl:w-[700px] max-xl:w-[600px] w-[800px]"
+                    ? "max-2xl:w-[700px] max-xl:w-[600px] max-lg:w-[350px] w-[800px]"
                     : "max-2xl:w-[250px] max-xl:w-[200px] w-[270px]"
                 }
                 height={
                   index === 0
-                    ? "max-2xl:h-[300px] h-[350px]"
+                    ? "max-2xl:h-[300px] max-lg:h-[200px] h-[350px]"
                     : "max-2xl:h-[100px] max-xl:h-[90px] h-[130px]"
                 }
               />
@@ -95,7 +97,7 @@ function Innovation({
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

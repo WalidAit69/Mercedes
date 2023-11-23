@@ -4,6 +4,11 @@ import React, { useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { ChevronDown, ChevronUp, MoveUpRight } from "lucide-react";
 import ArtCulture from "./headerMenu/ArtCulture";
+import Sustainability from "./headerMenu/Sustainability";
+import Design from "./headerMenu/Design";
+import Innovation from "./headerMenu/Innovation";
+import Exclusive from "./headerMenu/Exclusive";
+import Vehicles from "./headerMenu/Vehicles";
 
 function MobileMenu() {
   const [ShowMenu, setShowMenu] = useState(false);
@@ -127,6 +132,35 @@ function MobileMenu() {
       <div>
         {MenuType === "Art&Culture" && (
           <ArtCulture setShowMenu={setShowMenu} setMenuType={setMenuType} />
+        )}
+
+        {MenuType === "Sustainability" && (
+          <Sustainability setShowMenu={setShowMenu} setMenuType={setMenuType} />
+        )}
+
+        {MenuType === "Design" && (
+          <Design setShowMenu={setShowMenu} setMenuType={setMenuType} />
+        )}
+
+        {MenuType === "Innovation" && (
+          <Innovation
+            setShowMenu={setShowMenu}
+            setMenuType={setMenuType}
+          />
+        )}
+
+        {MenuType === "Exclusive" && (
+          <Exclusive
+            setShowMenu={setShowMenu}
+            setMenuType={setMenuType}
+          />
+        )}
+
+        {MenuType === "Vehicles" && (
+          <Vehicles
+            setShowMenu={setShowMenu}
+            setMenuType={setMenuType}
+          />
         )}
       </div>
     </>

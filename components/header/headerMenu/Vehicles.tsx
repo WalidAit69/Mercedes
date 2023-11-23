@@ -10,7 +10,7 @@ function Vehicles({
 }: {
   setShowMenu: any;
   setMenuType: any;
-  setHoveredLink: any;
+  setHoveredLink?: any;
 }) {
   const Cards = [
     {
@@ -29,19 +29,23 @@ function Vehicles({
       image: "/Menu/vehicles3.avif",
     },
   ];
+
   function CloseMenu() {
     setShowMenu(false);
-    setHoveredLink(0);
+    if (setHoveredLink) {
+      setHoveredLink(0);
+    }
     setMenuType("");
   }
+
   return (
-    <>
+    <div className="max-lg:overflow-y-scroll max-lg:h-[91vh]">
       <div className="flex w-full flex-col items-center justify-center mt-10 relative">
         <motion.ul
           initial={{ y: 40, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.5, ease: [0.8, 0, 0, 0.8] }}
-          className="flex items-center gap-7"
+          className="flex items-center gap-7 max-lg:flex-col"
         >
           <li className="text-[var(--wb-grey-50)] hover:text-white transition-colors navlinks_transition">
             Mercedes-Benz
@@ -63,19 +67,19 @@ function Vehicles({
           initial={{ y: 40, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.5, ease: [0.8, 0, 0, 0.8] }}
-          className="absolute right-5 top-[15%] cursor-pointer"
+          className="absolute right-5 top-[15%] cursor-pointer max-lg:top-0"
           onClick={CloseMenu}
         >
           <X />
         </motion.div>
       </div>
 
-      <div className="flex items-center justify-center h-fit w-full mt-20 ml-20">
+      <div className="flex max-lg:flex-col items-center justify-center h-fit w-full mt-20 lg:ml-20">
         <motion.div
           initial={{ y: 40, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.5, ease: [0.8, 0, 0, 0.8] }}
-          className="flex flex-col gap-4 mb-20"
+          className="flex max-lg:text-center flex-col gap-4 mb-20"
         >
           <h1 className="text-white text-xl">Purchase</h1>
           <ul className="flex flex-col gap-2 w-[130px]">
@@ -97,7 +101,7 @@ function Vehicles({
           </ul>
         </motion.div>
 
-        <div className="grid grid-cols-2 gap-24 ml-56 max-xl:ml-32">
+        <div className="grid grid-cols-2 max-lg:grid-cols-1 gap-24 ml-56 max-xl:ml-32 max-lg:ml-0">
           {Cards.map((card, index) => (
             <div
               key={card.title}
@@ -112,12 +116,12 @@ function Vehicles({
                 image={card.image}
                 width={
                   index === 0
-                    ? "max-2xl:w-[500px] max-xl:w-[400px] w-[600px]"
+                    ? "max-2xl:w-[500px] max-xl:w-[400px] max-sm:w-[300px] w-[600px]"
                     : "max-2xl:w-[250px] max-xl:w-[200px] w-[270px]"
                 }
                 height={
                   index === 0
-                    ? "max-2xl:h-[300px] h-[350px]"
+                    ? "max-2xl:h-[300px] max-sm:h-[200px] h-[350px]"
                     : "max-2xl:h-[100px] max-xl:h-[90px] h-[130px]"
                 }
               />
@@ -125,7 +129,7 @@ function Vehicles({
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
