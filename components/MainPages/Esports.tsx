@@ -38,15 +38,16 @@ function MainPage() {
       <div className="bg-gradient-to-t from-black to-transparent h-full w-full absolute inset-0"></div>
 
       <div
+        ref={ref}
         className="absolute top-[50%] left-32 max-lg:left-[50%] max-lg:-translate-x-1/2 text-white max-lg:text-center flex flex-col
         max-[400px]:top-[70%] max-[400px]:w-[300px]"
-        ref={ref}
       >
         <div className="text-4xl max-sm:text-3xl max-[400px]:text-2xl relative h-[40px] overflow-hidden w-full max-lg:w-[450px] max-sm:w-[300px]">
           <motion.h1
+            initial={{ bottom: "-35px" }}
             animate={h1controls}
             transition={{ duration: 1, delay: 0.6, ease: [0.8, 0, 0, 0.8] }}
-            className=" font-medium"
+            className=" font-medium absolute bottom-[-35px]"
           >
             Mercedes-Benz X Esports
           </motion.h1>

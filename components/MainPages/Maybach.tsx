@@ -45,6 +45,7 @@ function MainPageMaybach() {
       >
         <div className="relative h-[40px] overflow-hidden w-[340px] max-lg:flex max-lg:items-center max-lg:justify-center">
           <motion.h1
+            initial={{ bottom: "-35px" }}
             animate={h1controls}
             transition={{ duration: 1, delay: 0.8, ease: [0.8, 0, 0, 0.8] }}
             className="text-4xl max-sm:text-3xl max-[400px]:text-2xl font-medium absolute bottom-[-35px]"
