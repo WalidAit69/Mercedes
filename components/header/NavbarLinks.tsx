@@ -63,14 +63,14 @@ function NavbarLinks({
     positioncontrols.start({ y: 0, opacity: 1 });
 
     if (showMobileMenu) {
-      heightcontrols.start({ height: "91vh" });
+      heightcontrols.start({ height: "94vh" });
     } else if (CloseSearchMenu) {
       heightcontrols.start({ height: 0 });
     } else if (ShowMenu) {
       heightcontrols.start({ height: "91vh" });
     } else if (showSearchMenu) {
       positioncontrols.start({ y: -45, opacity: 0 });
-      heightcontrols.start({ height: "91vh" });
+      heightcontrols.start({ height: "94vh" });
     } else if (showLinks || scrollDirection === "up") {
       heightcontrols.start({ height: "64px" });
       positioncontrols.start({ y: 0, opacity: 1 });

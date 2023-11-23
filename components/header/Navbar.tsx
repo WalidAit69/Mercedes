@@ -60,10 +60,14 @@ function Navbar() {
     setCloseSearchMenu(false);
   }
 
-  function ToggleMenu() {
-    setshowMobileMenu(!showMobileMenu);
+  function OpenMenu() {
+    setshowMobileMenu(true);
   }
- 
+
+  function CloseMenu() {
+    setshowMobileMenu(false);
+    setCloseSearchMenu(true);
+  }
 
   function CloseSearch() {
     setshowSearchMenu(false);
@@ -109,19 +113,19 @@ function Navbar() {
               Search <Search width={14} />
             </button>
 
-            <div className="relative h-[15px] w-[50px] overflow-hidden">
+            <div className="relative h-[15px] w-[50px] overflow-hidden lg:hidden">
               <motion.div
                 animate={{ top: showMobileMenu ? "-100%" : "0" }}
                 className="h-full w-full relative"
               >
                 <button
-                  onClick={ToggleMenu}
+                  onClick={OpenMenu}
                   className="flex absolute h-full items-center gap-1 hover:text-white transition-colors navlinks_transition lg:hidden mr-5"
                 >
                   Menu
                 </button>
                 <button
-                  onClick={ToggleMenu}
+                  onClick={CloseMenu}
                   className="flex absolute top-full h-full items-center gap-1 hover:text-white transition-colors navlinks_transition lg:hidden mr-5"
                 >
                   Close

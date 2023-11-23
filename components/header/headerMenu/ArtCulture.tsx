@@ -43,11 +43,10 @@ function ArtCulture({
 }: {
   setShowMenu: any;
   setMenuType: any;
-  setHoveredLink: any;
+  setHoveredLink?: any;
 }) {
   function CloseMenu() {
     setShowMenu(false);
-    setHoveredLink(0);
     setMenuType("");
   }
 
@@ -55,13 +54,13 @@ function ArtCulture({
   const width = "max-2xl:w-[260px] max-xl:w-[240px] w-[270px]";
 
   return (
-    <>
+    <div className="max-lg:overflow-y-scroll max-lg:h-[91vh]">
       <div className="flex w-full flex-col items-center justify-center mt-10 relative">
         <motion.ul
           initial={{ y: 40, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.5, ease: [0.8, 0, 0, 0.8] }}
-          className="flex items-center gap-7"
+          className="flex items-center gap-7 max-lg:flex-col"
         >
           <li className="text-[var(--wb-grey-50)] hover:text-white transition-colors navlinks_transition">
             Zeitgeist
@@ -77,15 +76,15 @@ function ArtCulture({
           initial={{ y: 40, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.5, ease: [0.8, 0, 0, 0.8] }}
-          className="absolute right-5 cursor-pointer"
+          className="absolute right-5 cursor-pointer max-lg:top-0"
           onClick={CloseMenu}
         >
           <X />
         </motion.div>
       </div>
 
-      <div className="flex flex-col items-center justify-center h-fit w-full mt-20">
-        <div className="grid grid-cols-3 gap-24">
+      <div className="flex flex-col items-center justify-center max-lg:h-full w-full mt-20">
+        <div className="grid grid-cols-3 gap-24 max-lg:grid-cols-1 max-lg:h-full max-xl:pb-24">
           {Cards.map((card) => (
             <MenuSmCard
               key={card.title}
@@ -98,7 +97,7 @@ function ArtCulture({
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
