@@ -4,7 +4,15 @@ import React, { useRef, useEffect } from "react";
 import { ChevronRight } from "lucide-react";
 import { motion, useAnimation, useInView } from "framer-motion";
 
-function MainPage() {
+function MainPage({
+  title,
+  desc,
+  videosrc,
+}: {
+  title: String;
+  desc?: String;
+  videosrc: string;
+}) {
   const h1controls = useAnimation();
   const controls = useAnimation();
   const layercontrols = useAnimation();
@@ -32,7 +40,7 @@ function MainPage() {
         muted
         className="h-[100vh] w-[100vw] object-cover absolute top-0 left-0"
       >
-        <source src="./original.mp4" type="video/mp4" />
+        <source src={videosrc} type="video/mp4" />
       </video>
 
       <div className="bg-gradient-to-t from-black to-transparent h-full w-full absolute inset-0"></div>
@@ -47,9 +55,9 @@ function MainPage() {
             initial={{ bottom: "-35px" }}
             animate={h1controls}
             transition={{ duration: 1, delay: 0.6, ease: [0.8, 0, 0, 0.8] }}
-            className=" font-medium absolute bottom-[-35px]"
+            className="font-medium absolute bottom-[-35px]"
           >
-            Mercedes-Benz X Esports
+            {title}
           </motion.h1>
         </div>
 
@@ -57,10 +65,9 @@ function MainPage() {
           initial={{ opacity: 0 }}
           animate={controls}
           transition={{ duration: 1, delay: 2, ease: [0.8, 0, 0, 0.8] }}
-          className="my-4 font-medium text-lg max-sm:text-sm max-[400px]:text-xs max-sm:max-w-[400px] max-[400px]:w-[300px] "
+          className="my-4 font-medium text-lg max-sm:text-sm max-[400px]:text-xs max-sm:max-w-[400px] max-[400px]:w-[300px] max-w-xl"
         >
-          Join the hunt for glory – an interactive League of Legends Esports{" "}
-          <br /> adventure.
+          {desc}
         </motion.h3>
 
         <motion.div

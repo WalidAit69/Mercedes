@@ -8,19 +8,28 @@ import MainPageMaybach from "@/components/MainPages/Maybach";
 import SocialsBanner from "@/components/SocialsBanner";
 import Footer from "@/components/footers/Footer";
 import FooterMenu from "@/components/footers/FooterMenu";
-import { useState } from "react";
 
 export default function Home() {
-
   return (
     <div className="relaive h-[100vh]">
-      <MainPage />
+      <MainPage
+        videosrc={"./original.mp4"}
+        title={"Mercedes-Benz X Esports"}
+        desc={
+          "Join the hunt for glory – an interactive League of Legends Esports adventure."
+        }
+      />
+      <MainPage
+        videosrc={"./original (1).mp4"}
+        title={"DEFINING CLASS"}
+        desc={"Join us as we redefine luxury and explore the Mercedes Class Series."}
+      />
       <MainPageMaybach />
-      <Features/>
-      <Masterpiece/>
-      <SocialsBanner/>
-      <FooterMenu/>
-      <Footer/>
+      <Features />
+      <Masterpiece />
+      <SocialsBanner />
+      <FooterMenu />
+      <Footer />
     </div>
   );
 }
