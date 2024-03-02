@@ -28,13 +28,11 @@ function MainPageMaybach() {
 
   return (
     <main className="w-full h-full relative">
-      <Image
-        width={100}
-        height={100}
+      <img
         src={"/maybach.avif"}
         alt="MAYBACH"
         className="h-[100vh] w-[100vw] object-cover absolute top-0 left-0"
-      ></Image>
+      ></img>
 
       <div className="bg-gradient-to-t from-black to-transparent h-full w-full absolute inset-0"></div>
 
